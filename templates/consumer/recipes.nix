@@ -69,8 +69,12 @@ in
       }:
 
       let
-        # Helper to load recipes from a directory using import-tree
-        loadRecipesO =
+        # Constant for identifying app packages
+        appSuffix = "-app";
+
+        # Load recipe files from a directory using import-tree
+        # Returns a list of modules, each containing a recipe config and file path
+        loadRecipesFromDir =
           dir:
           if dir == null then
             [ ]
@@ -96,40 +100,25 @@ in
             ) recipeFiles;
 
         # Load package and app recipes from configured directories
-        packageRecipesO = loadRecipesO config.forge.recipeDirs.packages;
-        appRecipesO = loadRecipesO config.forge.recipeDirs.apps;
+        consumerPackageRecipes = loadRecipesFromDir config.forge.recipeDirs.packages;
+        consumerAppRecipes = loadRecipesFromDir config.forge.recipeDirs.apps;
 
-        apps = lib.attrValues (
-          lib.filterAttrs (name: app: lib.hasSuffix "-app" name) provider.packages.${system}
-        );
+        # Get app and package derivations from provider
+        apps = lib.pipe provider.packages.${system} [
+          (lib.filterAttrs (name: app: lib.hasSuffix appSuffix name))
+          (lib.attrValues)
+        ];
+        packages = lib.pipe provider.packages.${system} [
+          (lib.filterAttrs (name: pkg: (!lib.hasSuffix appSuffix name) && (pkg ? config)))
+          (lib.attrValues)
+        ];
 
-        packages = lib.attrValues (
-          lib.filterAttrs (
-            name: pacakge: (!lib.hasSuffix "-app" name) && (pacakge ? config)
-          ) provider.packages.${system}
-        );
+        loadConfig = attrs: map (drv: drv.config or { }) attrs;
 
-        loadRecipes =
-          recipes:
-          map (
-            drv:
-            let
-              drvOriginal = lib.trace drv.name (
-                lib.findFirst (
-                  x: x ? config.recipePath && x.config.recipePath == drv.config.recipePath
-                ) drv appRecipesO
-              );
-            in
-            if drv != drvOriginal then
-              lib.trace "extended ${drv.name}" (drv.extendRecipe drvOriginal.config)
-            else
-              drv.extendRecipe { }
-          ) recipes;
+        providerAppConfigs = loadConfig apps;
+        providerPackageConfigs = loadConfig packages;
 
-        # load package and app recipes from forge provider
-        appRecipes = loadRecipes apps;
-        packageRecipes = loadRecipes packages;
-
+        # Merge consumer app recipes with provider apps
         finalApps = map (
           providerApp:
           let
@@ -150,11 +139,11 @@ in
       in
 
       {
-        forge.provider.packages = packageRecipes;
-        forge.provider.apps = appRecipes;
+        forge.provider.packages = providerPackageConfigs;
+        forge.provider.apps = providerAppConfigs;
 
-        forge.consumer.packages = packageRecipesO;
-        forge.consumer.apps = appRecipesO;
+        forge.consumer.packages = consumerPackageRecipes;
+        forge.consumer.apps = consumerAppRecipes;
 
         forge.apps = finalApps;
         forge.packages = packages;
