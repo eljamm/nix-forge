@@ -60,6 +60,13 @@
         packageRecipesO = loadRecipesO config.forge.recipeDirs.packages;
         appRecipesO = loadRecipesO config.forge.recipeDirs.apps;
 
+        appRecipesAttrsO = lib.listToAttrs (
+          lib.map (value: {
+            name = value.name;
+            value = value;
+          }) appRecipesO
+        );
+
         apps = lib.attrValues (
           lib.filterAttrs (name: app: lib.hasSuffix "-app" name) provider.packages.${system}
         );
@@ -74,9 +81,10 @@
           recipes:
           map (
             drv:
-            (drv.extendRecipe {
-
-            })
+            if lib.hasAttr "${drv.name}" appRecipesAttrsO then
+              (drv.extendRecipe appRecipesAttrsO.${drv.name}.config)
+            else
+              drv
           ) recipes;
 
         # load package and app recipes from forge provider
