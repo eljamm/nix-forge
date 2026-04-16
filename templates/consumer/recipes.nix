@@ -60,13 +60,6 @@
         packageRecipesO = loadRecipesO config.forge.recipeDirs.packages;
         appRecipesO = loadRecipesO config.forge.recipeDirs.apps;
 
-        appRecipesAttrsO = lib.listToAttrs (
-          lib.map (value: {
-            name = value.name;
-            value = value;
-          }) appRecipesO
-        );
-
         apps = lib.attrValues (
           lib.filterAttrs (name: app: lib.hasSuffix "-app" name) provider.packages.${system}
         );
@@ -81,15 +74,22 @@
           recipes:
           map (
             drv:
-            if lib.hasAttr "${drv.name}" appRecipesAttrsO then
-              (drv.extendRecipe appRecipesAttrsO.${drv.name}.config)
+            let
+              drvOriginal = lib.trace drv.name (
+                lib.findFirst (
+                  x: x ? config.recipePath && x.config.recipePath == drv.config.recipePath
+                ) drv appRecipesO
+              );
+            in
+            if drv != drvOriginal then
+              lib.trace "extended ${drv.name}" (drv.extendRecipe drvOriginal.config)
             else
-              drv
+              drv.extendRecipe { }
           ) recipes;
 
         # load package and app recipes from forge provider
-        appRecipes = lib.traceVal (appRecipesO ++ (loadRecipes apps));
-        packageRecipes = packageRecipesO ++ (loadRecipes packages);
+        appRecipes = (loadRecipes apps);
+        packageRecipes = (loadRecipes packages);
       in
 
       {
