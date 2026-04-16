@@ -1,24 +1,33 @@
-{ inputs, provider }:
+{ inputs }: # nix-forge's inputs (import-tree, nix-utils)
+
+{ lib, self, ... }:
 
 {
-  lib,
-  self,
-  ...
-}:
+  # Import the core forge modules
+  imports = [
+    ./modules/forge.nix
+    ./modules/apps
+    ./modules/packages.nix
+    ./packages.nix # Generates _forge-config, _forge-options, _forge-ui
+  ];
 
-{
   config = {
+    # Override the inputs argument for submodules with nix-forge's inputs
+    # This ensures modules have access to nix-utils and import-tree
+    _module.args.inputs = lib.mkForce inputs;
+
+    # Recipe loading logic using nix-forge's bundled dependencies
     perSystem =
       {
-        system,
         config,
         lib,
+        pkgs,
         ...
-      }:
+      }@args:
 
       let
         # Helper to load recipes from a directory using import-tree
-        loadRecipesO =
+        loadRecipes =
           dir:
           if dir == null then
             [ ]
@@ -33,7 +42,6 @@
                 (inputs.import-tree.withLib lib).leafs
                 # Exclude non-recipe files
                 (lib.filter (file: lib.hasSuffix "/recipe.nix" file))
-                (lib.traceValSeq)
               ];
             in
             map (
@@ -45,33 +53,9 @@
             ) recipeFiles;
 
         # Load package and app recipes from configured directories
-        packageRecipesO = loadRecipes config.forge.recipeDirs.packages;
-        appRecipesO = loadRecipes config.forge.recipeDirs.apps;
-
-        apps = lib.attrValues (
-          lib.filterAttrs (name: app: lib.hasSuffix "-app" name) provider.packages.${system}
-        );
-
-        packages = lib.attrValues (
-          lib.filterAttrs (
-            name: pacakge: (!lib.hasSuffix "-app" name) && (pacakge ? config)
-          ) provider.packages.${system}
-        );
-
-        loadRecipes =
-          recipes:
-          map (
-            drv:
-            (drv.extendRecipe {
-
-            })
-          ) recipes;
-
-        # load package and app recipes from forge provider
-        appRecipes = (loadRecipes apps);
-        packageRecipes = (loadRecipes packages);
+        packageRecipes = loadRecipes config.forge.recipeDirs.packages;
+        appRecipes = loadRecipes config.forge.recipeDirs.apps;
       in
-
       {
         forge.packages = packageRecipes;
         forge.apps = appRecipes;

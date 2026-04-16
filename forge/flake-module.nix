@@ -53,8 +53,8 @@
             ) recipeFiles;
 
         # Load package and app recipes from configured directories
-        packageRecipes = lib.traceValSeq (loadRecipes config.forge.recipeDirs.packages);
-        appRecipes = lib.traceValSeq (loadRecipes config.forge.recipeDirs.apps);
+        packageRecipes = (loadRecipes config.forge.recipeDirs.packages);
+        appRecipes = (loadRecipes config.forge.recipeDirs.apps);
       in
       {
         forge.packages = packageRecipes;

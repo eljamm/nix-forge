@@ -9,8 +9,8 @@
   # };
 
   inputs = {
-    ngi-forge.url = "github:eljamm/nix-forge/feat/auto-override-consumer";
-    # ngi-forge.url = ../../.;
+    # ngi-forge.url = "github:eljamm/nix-forge/feat/auto-override-consumer";
+    ngi-forge.url = ../../.;
     elm2nix.follows = "ngi-forge/elm2nix";
     flake-parts.follows = "ngi-forge/flake-parts";
     nimi.follows = "ngi-forge/nimi";
@@ -24,7 +24,10 @@
       systems = [ "x86_64-linux" ];
       imports = [
         ngi-forge.flakeModules.default
-        (import ./recipes.nix { provider = ngi-forge; })
+        (import ./recipes.nix {
+          inherit inputs;
+          provider = ngi-forge;
+        })
       ];
 
       debug = true;
