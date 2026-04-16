@@ -38,6 +38,20 @@ in
         default = [ ];
         description = "";
       };
+
+      options.forge.consumer.packages = lib.mkOption {
+        internal = true;
+        type = options.forge.packages.type;
+        default = [ ];
+        description = "";
+      };
+
+      options.forge.consumer.apps = lib.mkOption {
+        internal = true;
+        type = options.forge.apps.type;
+        default = [ ];
+        description = "";
+      };
     }
   );
 
@@ -100,11 +114,9 @@ in
           map (
             drv:
             let
-              drvOriginal = lib.trace drv.name (
-                lib.findFirst (
-                  x: x ? config.recipePath && x.config.recipePath == drv.config.recipePath
-                ) drv appRecipesO
-              );
+              drvOriginal = lib.findFirst (
+                x: x ? config.recipePath && x.config.recipePath == drv.config.recipePath
+              ) drv appRecipesO;
             in
             if drv != drvOriginal then
               lib.trace "extended ${drv.name}" (drv.extendRecipe drvOriginal.config)
@@ -113,16 +125,30 @@ in
           ) recipes;
 
         # load package and app recipes from forge provider
-        appRecipes = (loadRecipes apps);
-        packageRecipes = (loadRecipes packages);
+        # appRecipes = loadRecipes apps;
+        # packageRecipes = loadRecipes packages;
+
+        appRecipes = apps;
+        packageRecipes = packages;
+
+        finalApps = map (
+          app:
+          let
+            drvOriginal = lib.findFirst (x: x.name == app.name) app apps;
+          in
+          lib.trace "extended ${app.name}" (app.extendRecipe drvOriginal.config)
+        ) apps;
       in
 
       {
-        forge.packages = packageRecipes;
-        forge.apps = appRecipes;
+        forge.provider.packages = packageRecipes;
+        forge.provider.apps = appRecipes;
 
-        forge.provider.packages = packageRecipesO;
-        forge.provider.apps = appRecipesO;
+        forge.consumer.packages = packageRecipesO;
+        forge.consumer.apps = appRecipesO;
+
+        forge.apps = finalApps;
+        forge.packages = packages;
       };
   };
 }
