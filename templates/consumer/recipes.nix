@@ -127,22 +127,25 @@ in
           ) recipes;
 
         # load package and app recipes from forge provider
-        appRecipes = (loadRecipes apps);
-        packageRecipes = (loadRecipes packages);
+        appRecipes = loadRecipes apps;
+        packageRecipes = loadRecipes packages;
 
         finalApps = map (
           providerApp:
           let
             matchedConsumerApp = lib.findFirst (
               consumerApp: consumerApp.name == providerApp.name
-            ) providerApp config.forge.consumer.apps;
+            ) null config.forge.consumer.apps;
           in
-          (lib.trace "overwriting ${providerApp.name} with ${matchedConsumerApp.name}") {
-            imports = [
-              matchedConsumerApp
-              providerApp
-            ];
-          }
+          if matchedConsumerApp != null then
+            {
+              imports = [
+                (self.outPath + "/" + matchedConsumerApp.recipePath)
+                providerApp
+              ];
+            }
+          else
+            providerApp
         ) config.forge.provider.apps;
       in
 

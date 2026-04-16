@@ -5,7 +5,7 @@
   ...
 }:
 
-{
+lib.trace "It works!!!" {
   name = "python-web-app";
 
   links.docs.text = lib.mkForce "yes!";
