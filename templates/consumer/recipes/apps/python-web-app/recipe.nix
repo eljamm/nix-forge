@@ -5,7 +5,9 @@
   ...
 }:
 
-pkgs.forgePkgs.python-web-app.extendRecipe {
+{
+  name = "python-web-app";
+
   services.runtimes.nixos.extraConfig = {
     environment.systemPackages = [
       pkgs.postgresql

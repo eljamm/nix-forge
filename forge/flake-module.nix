@@ -44,14 +44,17 @@
                 (lib.filter (file: lib.hasSuffix "/recipe.nix" file))
               ];
             in
-            map (file: (_: {
-              imports = [ file ];
-              recipePath = lib.removePrefix (self.outPath + "/") file;
-            })) recipeFiles;
+            map (
+              file:
+              (_: {
+                imports = [ file ];
+                recipePath = lib.removePrefix (self.outPath + "/") file;
+              })
+            ) recipeFiles;
 
         # Load package and app recipes from configured directories
-        packageRecipes = loadRecipes config.forge.recipeDirs.packages;
-        appRecipes = loadRecipes config.forge.recipeDirs.apps;
+        packageRecipes = lib.traceValSeq (loadRecipes config.forge.recipeDirs.packages);
+        appRecipes = lib.traceValSeq (loadRecipes config.forge.recipeDirs.apps);
       in
       {
         forge.packages = packageRecipes;

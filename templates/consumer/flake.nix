@@ -1,15 +1,16 @@
 {
   description = "NGI Forge";
 
-  nixConfig = {
-    extra-substituters = [ "https://ngi-forge.cachix.org" ];
-    extra-trusted-public-keys = [
-      "ngi-forge.cachix.org-1:PK0qK+LhWt4GQVpUtPapyXWxJSM1GhtmPW6CRCoygz0="
-    ];
-  };
+  # nixConfig = {
+  #   extra-substituters = [ "https://ngi-forge.cachix.org" ];
+  #   extra-trusted-public-keys = [
+  #     "ngi-forge.cachix.org-1:PK0qK+LhWt4GQVpUtPapyXWxJSM1GhtmPW6CRCoygz0="
+  #   ];
+  # };
 
   inputs = {
     ngi-forge.url = "github:ngi-nix/forge";
+    # ngi-forge.url = ../../.;
     elm2nix.follows = "ngi-forge/elm2nix";
     flake-parts.follows = "ngi-forge/flake-parts";
     nimi.follows = "ngi-forge/nimi";
@@ -21,7 +22,10 @@
     inputs@{ flake-parts, ngi-forge, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
-      imports = [ ngi-forge.flakeModules.default ];
+      imports = [
+        ngi-forge.flakeModules.default
+        (import ./recipes.nix { provider = ngi-forge; })
+      ];
 
       debug = true;
 
