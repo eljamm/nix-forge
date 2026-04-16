@@ -114,9 +114,11 @@ in
           map (
             drv:
             let
-              drvOriginal = lib.findFirst (
-                x: x ? config.recipePath && x.config.recipePath == drv.config.recipePath
-              ) drv appRecipesO;
+              drvOriginal = lib.trace drv.name (
+                lib.findFirst (
+                  x: x ? config.recipePath && x.config.recipePath == drv.config.recipePath
+                ) drv appRecipesO
+              );
             in
             if drv != drvOriginal then
               lib.trace "extended ${drv.name}" (drv.extendRecipe drvOriginal.config)
@@ -125,19 +127,23 @@ in
           ) recipes;
 
         # load package and app recipes from forge provider
-        # appRecipes = loadRecipes apps;
-        # packageRecipes = loadRecipes packages;
-
-        appRecipes = apps;
-        packageRecipes = packages;
+        appRecipes = (loadRecipes apps);
+        packageRecipes = (loadRecipes packages);
 
         finalApps = map (
-          app:
+          providerApp:
           let
-            drvOriginal = lib.findFirst (x: x.name == app.name) app apps;
+            matchedConsumerApp = lib.findFirst (
+              consumerApp: consumerApp.name == providerApp.name
+            ) providerApp config.forge.consumer.apps;
           in
-          lib.trace "extended ${app.name}" (app.extendRecipe drvOriginal.config)
-        ) apps;
+          (lib.trace "overwriting ${providerApp.name} with ${matchedConsumerApp.name}") {
+            imports = [
+              matchedConsumerApp
+              providerApp
+            ];
+          }
+        ) config.forge.provider.apps;
       in
 
       {
