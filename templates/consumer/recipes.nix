@@ -21,15 +21,21 @@
           lib.filterAttrs (name: app: lib.hasSuffix "-app" name) provider.packages.${system}
         );
 
-        appRecipes = lib.traceValSeq (map (app: provider + "/" + app.config.recipePath) apps);
+        packages = lib.attrValues (
+          lib.filterAttrs (
+            name: pacakge: (!lib.hasSuffix "-app" name) && (pacakge ? config)
+          ) provider.packages.${system}
+        );
 
         # load package and app recipes from forge provider
-        # packageRecipes = lib.traceValSeq (loadRecipes config.forge.recipeDirs.packages);
-        # appRecipes = lib.traceValSeq (loadRecipes config.forge.recipeDirs.apps);
+        appRecipes = lib.traceValSeq (map (app: provider + "/" + app.config.recipePath) apps);
+        packageRecipes = lib.traceValSeq (
+          map (package: provider + "/" + package.config.recipePath) packages
+        );
       in
 
       {
-        # forge.packages = packageRecipes;
+        forge.packages = packageRecipes;
         forge.apps = appRecipes;
       };
   };
