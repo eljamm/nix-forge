@@ -9,7 +9,7 @@
   # };
 
   inputs = {
-    ngi-forge.url = "github:ngi-nix/forge";
+    ngi-forge.url = "github:eljamm/nix-forge/feat/auto-override-consumer";
     # ngi-forge.url = ../../.;
     elm2nix.follows = "ngi-forge/elm2nix";
     flake-parts.follows = "ngi-forge/flake-parts";

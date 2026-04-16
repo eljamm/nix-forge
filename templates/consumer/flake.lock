@@ -105,14 +105,19 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "path": "../..",
-        "type": "path"
+        "lastModified": 1776356634,
+        "narHash": "sha256-LG5zRlUwl675pJ2iM1LNFiimgAOiBxjqajziMbIB7qU=",
+        "owner": "eljamm",
+        "repo": "nix-forge",
+        "rev": "437ad7f4114bcfd777d3755d9cdf1ad08f4c0391",
+        "type": "github"
       },
       "original": {
-        "path": "../..",
-        "type": "path"
-      },
-      "parent": []
+        "owner": "eljamm",
+        "ref": "feat/auto-override-consumer",
+        "repo": "nix-forge",
+        "type": "github"
+      }
     },
     "nimi": {
       "inputs": {
