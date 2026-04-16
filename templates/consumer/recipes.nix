@@ -118,24 +118,29 @@ in
         providerAppConfigs = loadConfig apps;
         providerPackageConfigs = loadConfig packages;
 
-        # Merge consumer app recipes with provider apps
-        finalApps = map (
-          providerApp:
-          let
-            matchedConsumerApp = lib.findFirst (
-              consumerApp: consumerApp.name == providerApp.name
-            ) null config.forge.consumer.apps;
-          in
-          if matchedConsumerApp != null then
-            {
-              imports = [
-                (self.outPath + "/" + matchedConsumerApp.recipePath)
-                providerApp
-              ];
-            }
-          else
-            providerApp
-        ) config.forge.provider.apps;
+        # Merge provider and consumer recipes
+        mergeRecipes =
+          type:
+          map (
+            providerItem:
+            let
+              matchedRecipe = lib.findFirst (
+                recipe: recipe.name == providerItem.name
+              ) null config.forge.consumer."${type}";
+            in
+            if matchedRecipe != null then
+              {
+                imports = [
+                  (self.outPath + "/" + matchedRecipe.recipePath)
+                  providerItem
+                ];
+              }
+            else
+              providerItem
+          ) config.forge.provider."${type}";
+
+        mergedApps = mergeRecipes "apps";
+        mergedPackages = mergeRecipes "packages";
       in
 
       {
@@ -145,8 +150,8 @@ in
         forge.consumer.packages = consumerPackageRecipes;
         forge.consumer.apps = consumerAppRecipes;
 
-        forge.apps = finalApps;
-        forge.packages = packages;
+        forge.apps = mergedApps;
+        forge.packages = mergedPackages;
       };
   };
 }
