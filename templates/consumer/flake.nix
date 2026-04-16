@@ -23,9 +23,9 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
       imports = [
-        ngi-forge.flakeModules.default
+        # ngi-forge.flakeModules.default
         (import ./recipes.nix {
-          inherit inputs;
+          # inherit inputs;
           provider = ngi-forge;
         })
       ];

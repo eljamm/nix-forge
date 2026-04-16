@@ -1,4 +1,4 @@
-{ inputs, provider }:
+{ provider }:
 
 {
   lib,
@@ -7,7 +7,19 @@
 }:
 
 {
+  # Import the core forge modules
+  imports = [
+    (provider + "/forge/modules/forge.nix")
+    (provider + "/forge/modules/apps")
+    (provider + "/forge/modules/packages.nix")
+    (provider + "/forge/packages.nix") # Generates _forge-config, _forge-options, _forge-ui
+  ];
+
   config = {
+    # Override the inputs argument for submodules with nix-forge's inputs
+    # This ensures modules have access to nix-utils and import-tree
+    _module.args.inputs = lib.mkForce provider.inputs;
+
     perSystem =
       {
         system,
@@ -30,7 +42,7 @@
 
               recipeFiles = lib.pipe dirPath [
                 # Use bundled import-tree from nix-forge inputs
-                (inputs.import-tree.withLib lib).leafs
+                (provider.inputs.import-tree.withLib lib).leafs
                 # Exclude non-recipe files
                 (lib.filter (file: lib.hasSuffix "/recipe.nix" file))
                 (lib.traceValSeq)
@@ -45,8 +57,8 @@
             ) recipeFiles;
 
         # Load package and app recipes from configured directories
-        packageRecipesO = loadRecipes config.forge.recipeDirs.packages;
-        appRecipesO = loadRecipes config.forge.recipeDirs.apps;
+        packageRecipesO = loadRecipesO config.forge.recipeDirs.packages;
+        appRecipesO = loadRecipesO config.forge.recipeDirs.apps;
 
         apps = lib.attrValues (
           lib.filterAttrs (name: app: lib.hasSuffix "-app" name) provider.packages.${system}
@@ -68,8 +80,8 @@
           ) recipes;
 
         # load package and app recipes from forge provider
-        appRecipes = (loadRecipes apps);
-        packageRecipes = (loadRecipes packages);
+        appRecipes = lib.traceVal (appRecipesO ++ (loadRecipes apps));
+        packageRecipes = packageRecipesO ++ (loadRecipes packages);
       in
 
       {
