@@ -3,8 +3,15 @@
 {
   lib,
   self,
+  flake-parts-lib,
   ...
 }:
+
+let
+  inherit (flake-parts-lib)
+    mkPerSystemOption
+    ;
+in
 
 {
   # Import the core forge modules
@@ -14,6 +21,25 @@
     (provider + "/forge/modules/packages.nix")
     (provider + "/forge/packages.nix") # Generates _forge-config, _forge-options, _forge-ui
   ];
+
+  options.perSystem = mkPerSystemOption (
+    { options, ... }:
+    {
+      options.forge.provider.packages = lib.mkOption {
+        internal = true;
+        type = options.forge.packages.type;
+        default = [ ];
+        description = "";
+      };
+
+      options.forge.provider.apps = lib.mkOption {
+        internal = true;
+        type = options.forge.apps.type;
+        default = [ ];
+        description = "";
+      };
+    }
+  );
 
   config = {
     # Override the inputs argument for submodules with nix-forge's inputs
@@ -45,7 +71,6 @@
                 (provider.inputs.import-tree.withLib lib).leafs
                 # Exclude non-recipe files
                 (lib.filter (file: lib.hasSuffix "/recipe.nix" file))
-                (lib.traceValSeq)
               ];
             in
             map (
@@ -95,6 +120,9 @@
       {
         forge.packages = packageRecipes;
         forge.apps = appRecipes;
+
+        forge.provider.packages = packageRecipesO;
+        forge.provider.apps = appRecipesO;
       };
   };
 }
