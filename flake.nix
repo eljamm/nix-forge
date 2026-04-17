@@ -55,7 +55,7 @@
       ];
 
       imports = [
-        (import ./forge/flake-module.nix { inherit inputs; })
+        (import ./forge/flake-module.nix { provider = self; })
         # ./forge/flake-module.nix
         ./flake/develop
         ./flake/packages.nix
@@ -66,7 +66,7 @@
       _module.args.rootPath = ./.;
 
       # Export flake module for use in other projects
-      flake.flakeModules.default = import ./forge/flake-module.nix { inherit inputs; };
+      flake.flakeModules.default = import ./forge/flake-module.nix;
 
       flake.flakeModules.common = import ./forge/flake-module.nix { inherit inputs; };
       flake.flakeModules.consumer = import ./forge/consumer-module.nix;
