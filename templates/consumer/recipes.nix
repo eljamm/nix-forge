@@ -129,6 +129,7 @@ in
               ) null config.forge.consumer."${type}";
             in
             if matchedRecipe != null then
+              # TODO: remove result from providerItem
               {
                 imports = [
                   (self.outPath + "/" + matchedRecipe.recipePath)

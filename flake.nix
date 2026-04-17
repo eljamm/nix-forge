@@ -56,6 +56,7 @@
 
       imports = [
         (import ./forge/flake-module.nix { inherit inputs; })
+        # ./forge/flake-module.nix
         ./flake/develop
         ./flake/packages.nix
         ./flake/checks.nix
@@ -66,6 +67,10 @@
 
       # Export flake module for use in other projects
       flake.flakeModules.default = import ./forge/flake-module.nix { inherit inputs; };
+
+      flake.flakeModules.common = import ./forge/flake-module.nix { inherit inputs; };
+      flake.flakeModules.consumer = import ./forge/consumer-module.nix;
+      flake.flakeModules.provider = import ./forge/provider-module.nix;
 
       perSystem =
         { system, ... }:

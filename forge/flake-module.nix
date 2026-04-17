@@ -1,9 +1,22 @@
 { inputs }: # nix-forge's inputs (import-tree, nix-utils)
 
-{ lib, self, ... }:
+{
+  lib,
+  self,
+  flake-parts-lib,
+  ...
+}:
+
+let
+  inherit (flake-parts-lib)
+    mkPerSystemOption
+    ;
+
+  rootPath = self.outPath;
+in
 
 {
-  # Import the core forge modules
+  # core forge modules
   imports = [
     ./modules/forge.nix
     ./modules/apps
@@ -11,54 +24,80 @@
     ./packages.nix # Generates _forge-config, _forge-options, _forge-ui
   ];
 
+  options.perSystem = mkPerSystemOption (
+    { options, ... }:
+    {
+      options.forge.consumer.packages = lib.mkOption {
+        internal = true;
+        type = options.forge.packages.type;
+        default = [ ];
+        description = "";
+      };
+
+      options.forge.consumer.apps = lib.mkOption {
+        internal = true;
+        type = options.forge.apps.type;
+        default = [ ];
+        description = "";
+      };
+
+      options.forge.provider.packages = lib.mkOption {
+        internal = true;
+        type = options.forge.packages.type;
+        default = [ ];
+        description = "";
+      };
+
+      options.forge.provider.apps = lib.mkOption {
+        internal = true;
+        type = options.forge.apps.type;
+        default = [ ];
+        description = "";
+      };
+    }
+  );
+
   config = {
     # Override the inputs argument for submodules with nix-forge's inputs
     # This ensures modules have access to nix-utils and import-tree
     _module.args.inputs = lib.mkForce inputs;
 
-    # Recipe loading logic using nix-forge's bundled dependencies
     perSystem =
       {
         config,
         lib,
-        pkgs,
         ...
-      }@args:
+      }:
 
       let
-        # Helper to load recipes from a directory using import-tree
-        loadRecipes =
-          dir:
-          if dir == null then
-            [ ]
-          else
+        # Merge provider and consumer recipes
+        mergeRecipes =
+          type:
+          map (
+            providerItem:
             let
-              # Convert string path to actual path relative to flake root
-              # self.outPath gives us the flake root directory
-              dirPath = self.outPath + "/${dir}";
-
-              recipeFiles = lib.pipe dirPath [
-                # Use bundled import-tree from nix-forge inputs
-                (inputs.import-tree.withLib lib).leafs
-                # Exclude non-recipe files
-                (lib.filter (file: lib.hasSuffix "/recipe.nix" file))
-              ];
+              matchedRecipe = lib.findFirst (
+                recipe: recipe.name == providerItem.name
+              ) null config.forge.consumer."${type}";
             in
-            map (
-              file:
-              (_: {
-                imports = [ file ];
-                recipePath = lib.removePrefix (self.outPath + "/") file;
-              })
-            ) recipeFiles;
+            if matchedRecipe != null then
+              {
+                imports = [
+                  (rootPath + "/" + matchedRecipe.recipePath)
+                  providerItem
+                ];
+              }
+            else
+              providerItem
+          ) config.forge.provider."${type}";
 
-        # Load package and app recipes from configured directories
-        packageRecipes = (loadRecipes config.forge.recipeDirs.packages);
-        appRecipes = (loadRecipes config.forge.recipeDirs.apps);
+        mergedApps = mergeRecipes "apps";
+        mergedPackages = mergeRecipes "packages";
       in
+
       {
-        forge.packages = packageRecipes;
-        forge.apps = appRecipes;
+        forge.apps = mergedApps;
+        forge.packages = mergedPackages;
       };
   };
 }

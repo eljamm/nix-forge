@@ -24,10 +24,14 @@
       systems = [ "x86_64-linux" ];
       imports = [
         # ngi-forge.flakeModules.default
-        (import ./recipes.nix {
-          # inherit inputs;
-          provider = ngi-forge;
-        })
+        # (import ./recipes.nix {
+        #   # inherit inputs;
+        #   provider = ngi-forge;
+        # })
+
+        ngi-forge.flakeModules.common
+        (ngi-forge.flakeModules.consumer { provider = ngi-forge; })
+        (ngi-forge.flakeModules.provider { provider = ngi-forge; })
       ];
 
       debug = true;
