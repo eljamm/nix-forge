@@ -58,6 +58,13 @@
         description = "Nimi module evaluation.";
       };
 
+      shell = lib.mkOption {
+        internal = true;
+        type = lib.types.nullOr lib.types.package;
+        default = null;
+        description = "Script that builds container image.";
+      };
+
       recipe = lib.mkOption {
         internal = true;
         type = lib.types.nullOr lib.types.package;
@@ -91,6 +98,8 @@
     };
 
     result.eval = nimi.passthru.evalNimiModule { config = config.result.modules; };
+
+    result.shell = nimi.mkNimiBin { config = config.result.modules; };
 
     result.recipe = nimi.mkContainerImage { config = config.result.modules; };
 
