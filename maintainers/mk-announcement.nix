@@ -18,11 +18,11 @@ lib.mapAttrs (
       SURVEY_URL = "https://nixos-foundation.notion.site/35759d49e1be81edb478e3aade9f8e95?pvs=105";
       NAME = "${app.displayName}";
 
-      SUMMARY =
-        let
-          s = lib.strings.removeSuffix "." app.description;
-        in
-        (lib.strings.toLower (lib.substring 0 1 s)) + (lib.substring 1 (lib.stringLength s) s);
+      SUMMARY = lib.pipe app.description [
+        (lib.strings.removeSuffix ".")
+        # lower first char
+        (s: (lib.toLower (lib.substring 0 1 s)) + (lib.substring 1 (-1) s))
+      ];
 
       HOMEPAGE_URL =
         if app.links.website != null then
@@ -32,9 +32,11 @@ lib.mapAttrs (
         else
           "<ADD_HOMEPAGE_URL>";
 
-      GRANT_STR = lib.strings.concatStringsSep ", " (
-        lib.attrsets.attrNames (lib.attrsets.filterAttrs (_: v: v != [ ]) app.ngi.grants)
-      );
+      GRANT_STR = lib.pipe app.ngi.grants [
+        (lib.filterAttrs (_: v: v != [ ]))
+        (lib.attrNames)
+        (lib.strings.concatStringsSep ", ")
+      ];
     };
 
     discourse = with info; ''
