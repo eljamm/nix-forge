@@ -24,11 +24,23 @@ let
       default # recurse scope
       ;
 
+    debug = flake.outputs.allSystems.x86_64-linux;
+
+    apps = lib.listToAttrs (
+      map (v: {
+        name = v.name;
+        value = v;
+      }) def.debug.forge.apps
+    );
+
+    announcements = import ./maintainers/mk-announcement.nix {
+      inherit (default) apps pkgs lib;
+    };
+
     nimi-def = import inputs.nimi-def { inherit pkgs; };
     nimi = def.nimi-def.nimi;
     nimiLib = def.nimi.passthru;
 
-    apps = flake.outputs.apps.${system};
     forgePkgs = flake.outputs.packages.${system};
     shells = flake.outputs.devShells.${system};
   });

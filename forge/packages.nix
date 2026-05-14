@@ -57,6 +57,11 @@
           text = builtins.toJSON config.forge;
         };
 
+        # announcements = import ../maintainers/mk-announcement.nix {
+        #   inherit pkgs lib;
+        #   apps = config.forge.apps;
+        # };
+
         _forge-options = pkgs.runCommand "options.json" { } ''
           cp ${forgeOptions.optionsJSON}/share/doc/nixos/options.json $out
         '';

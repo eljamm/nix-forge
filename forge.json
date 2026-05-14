@@ -1,0 +1,4610 @@
+{
+  "apps": [
+    {
+      "description": "Binary Analysis Next Generation framework for recursive unpacking and analysis of binary files.",
+      "displayName": "BANG",
+      "icon": "/nix/store/dm6wgnyrl7s28xabza3s1kairm1rsh7f-icon.svg",
+      "links": {
+        "docs": null,
+        "source": {
+          "description": null,
+          "text": "source",
+          "url": "https://github.com/armijnhemel/binaryanalysis-ng"
+        },
+        "website": null
+      },
+      "name": "bang-app",
+      "ngi": {
+        "grants": {
+          "Commons": [],
+          "Core": [],
+          "Entrust": [],
+          "Review": ["BANG"]
+        }
+      },
+      "programs": {
+        "mainPackage": null,
+        "packages": [
+          "/nix/store/fay8120dgk941c6403aq3vx6vpyi9dqs-bang-0-master-2026-04-14"
+        ],
+        "runCommand": "",
+        "runtimes": {
+          "program": { "enable": false },
+          "shell": { "enable": true }
+        }
+      },
+      "recipePath": "recipes/apps/bang-app/recipe.nix",
+      "result": "nixos-vm-config",
+      "services": {
+        "components": {},
+        "ports": [],
+        "runtimes": {
+          "container": {
+            "composeFile": null,
+            "enable": false,
+            "extraConfig": {},
+            "packages": [],
+            "result": "container",
+            "setup": "",
+            "tag": "latest"
+          },
+          "nixos": {
+            "enable": false,
+            "extraConfig": {
+              "imports": [
+                {
+                  "_file": "/nix/store/hzjyjs9hdsn2rwiz964m0594hyxbc8r9-source/forge/modules/apps/services/runtimes/nixos, via option perSystem.x86_64-linux.forge.apps.\"[definition 1-entry 1]\".services.runtimes.nixos.extraConfig",
+                  "imports": [{}]
+                }
+              ]
+            },
+            "packages": [],
+            "result": "nixos-vm-config",
+            "setup": "",
+            "vm": { "cores": 4, "diskSize": 4096, "memorySize": 2048 }
+          }
+        }
+      },
+      "test": {
+        "packages": [],
+        "result": "nixos-test",
+        "sandbox": true,
+        "script": "echo \"Test script\"\n",
+        "testScript": "machine.start()\nmachine.wait_for_unit(\"multi-user.target\")\n\nmachine.succeed(\"/nix/store/w2vjrfgfmswmp0z8mjyp8ypmy817v44g-bang-app-test-script\")\n"
+      },
+      "usage": "BANG recursively unpacks and classifies binary files, supporting 220+ formats\nincluding firmware images, archives, file systems, and executables.\n\n#### Scan a binary file\n\n```\nbang scan -u /tmp/bang-results /path/to/firmware.bin\n```\n\n"
+    },
+    {
+      "description": "Collaborative Office for desktop, based on LibreOffice technology.",
+      "displayName": "Collabora Office",
+      "icon": "/nix/store/mz36v48hh9nh99lggc1zgwdr06ig3pij-icon.svg",
+      "links": {
+        "docs": null,
+        "source": {
+          "description": null,
+          "text": "source",
+          "url": "https://github.com/CollaboraOnline/online"
+        },
+        "website": {
+          "description": null,
+          "text": "website",
+          "url": "https://www.collaboraonline.com/collabora-office/"
+        }
+      },
+      "name": "collabora-desktop-app",
+      "ngi": {
+        "grants": {
+          "Commons": ["Follow-me-slideshow", "InfiniteCanvas"],
+          "Core": [],
+          "Entrust": ["LO-Accessible"],
+          "Review": []
+        }
+      },
+      "programs": {
+        "mainPackage": "/nix/store/y8a4zc99c34ipakf15c750rs64sci6xs-collabora-desktop-25.04.9.2-2",
+        "packages": [],
+        "runCommand": "coda-qt",
+        "runtimes": {
+          "program": { "enable": true },
+          "shell": { "enable": false }
+        }
+      },
+      "recipePath": "recipes/apps/collabora-desktop-app/recipe.nix",
+      "result": "nixos-vm-config",
+      "services": {
+        "components": {},
+        "ports": [],
+        "runtimes": {
+          "container": {
+            "composeFile": null,
+            "enable": false,
+            "extraConfig": {},
+            "packages": [],
+            "result": "container",
+            "setup": "",
+            "tag": "latest"
+          },
+          "nixos": {
+            "enable": false,
+            "extraConfig": {
+              "imports": [
+                {
+                  "_file": "/nix/store/hzjyjs9hdsn2rwiz964m0594hyxbc8r9-source/forge/modules/apps/services/runtimes/nixos, via option perSystem.x86_64-linux.forge.apps.\"[definition 1-entry 2]\".services.runtimes.nixos.extraConfig",
+                  "imports": [{}]
+                }
+              ]
+            },
+            "packages": [],
+            "result": "nixos-vm-config",
+            "setup": "",
+            "vm": { "cores": 4, "diskSize": 4096, "memorySize": 2048 }
+          }
+        }
+      },
+      "test": {
+        "packages": [],
+        "result": "nixos-test",
+        "sandbox": true,
+        "script": "echo \"Test script\"\n",
+        "testScript": "machine.start()\nmachine.wait_for_unit(\"multi-user.target\")\n\nmachine.succeed(\"/nix/store/q19qn3g1whjfnx90z67m19dp0x6k31g4-collabora-desktop-app-test-script\")\n"
+      },
+      "usage": "Collabora Office is a powerful LibreOffice-based office suite that supports all major document, spreadsheet and presentation file formats.\n"
+    },
+    {
+      "description": "Free design tool for secure forms including Clinical Report Forms (eCRF)",
+      "displayName": "Goupile",
+      "icon": "/nix/store/33b9niz7300swnxl825q8bpc5hgjwrmn-icon.svg",
+      "links": {
+        "docs": {
+          "description": null,
+          "text": "docs",
+          "url": "https://goupile.org/en/docs"
+        },
+        "source": {
+          "description": null,
+          "text": "source",
+          "url": "https://github.com/Koromix/rygel"
+        },
+        "website": {
+          "description": null,
+          "text": "website",
+          "url": "https://goupile.org/en"
+        }
+      },
+      "name": "goupile-app",
+      "ngi": {
+        "grants": {
+          "Commons": [],
+          "Core": ["Goupile"],
+          "Entrust": [],
+          "Review": []
+        }
+      },
+      "programs": {
+        "mainPackage": null,
+        "packages": [],
+        "runCommand": "",
+        "runtimes": {
+          "program": { "enable": false },
+          "shell": { "enable": false }
+        }
+      },
+      "recipePath": "recipes/apps/goupile-app/recipe.nix",
+      "result": "nixos-vm-config",
+      "services": {
+        "components": {
+          "goupile": {
+            "argv": [
+              "-C",
+              "/nix/store/izfpvxna73284sqsrlrl17c7q2cldrvm-goupile.ini"
+            ],
+            "command": "/nix/store/lv3x8rk4gbf6xrdcvx3p3szlm2ng3n3j-goupile-3.12.4",
+            "configData": {},
+            "environment": {},
+            "preStart": null,
+            "result": {
+              "configData": {},
+              "preStart": null,
+              "process": {
+                "argv": [
+                  "/nix/store/lv3x8rk4gbf6xrdcvx3p3szlm2ng3n3j-goupile-3.12.4/bin/goupile",
+                  "-C",
+                  "/nix/store/izfpvxna73284sqsrlrl17c7q2cldrvm-goupile.ini"
+                ]
+              }
+            }
+          }
+        },
+        "ports": ["8181:8181"],
+        "runtimes": {
+          "container": {
+            "composeFile": "/nix/store/bab48kijgqgp7gmd5sw9zv2ajywlvix7-compose.yaml",
+            "enable": true,
+            "extraConfig": {},
+            "packages": [
+              "/nix/store/lv3x8rk4gbf6xrdcvx3p3szlm2ng3n3j-goupile-3.12.4"
+            ],
+            "result": "container",
+            "setup": "",
+            "tag": "latest"
+          },
+          "nixos": {
+            "enable": true,
+            "extraConfig": {
+              "imports": [
+                {
+                  "_file": "/nix/store/hzjyjs9hdsn2rwiz964m0594hyxbc8r9-source/recipes/apps/goupile-app/recipe.nix, via option perSystem.x86_64-linux.forge.apps.\"[definition 1-entry 3]\".services.runtimes.nixos.extraConfig",
+                  "imports": [
+                    {
+                      "systemd": {
+                        "tmpfiles": {
+                          "rules": ["d /var/lib/goupile 0700 root root -"]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "packages": [],
+            "result": "nixos-vm-config",
+            "setup": "",
+            "vm": { "cores": 4, "diskSize": 4096, "memorySize": 2048 }
+          }
+        }
+      },
+      "test": {
+        "packages": [],
+        "result": "nixos-test",
+        "sandbox": true,
+        "script": "curl=\"curl --retry 5 --retry-max-time 120 --retry-all-errors\"\n\n$curl --location localhost:8181 | grep -q \"Goupile\" >/dev/null\n",
+        "testScript": "machine.start()\nmachine.wait_for_unit(\"multi-user.target\")\nmachine.wait_for_unit(\"goupile.service\")\nmachine.succeed(\"/nix/store/5rzb7p3zmpfwi9816yiqgy7jy5p0phjd-goupile-app-test-script\")\n"
+      },
+      "usage": "Goupile is a tool for creating secure forms, especially Clinical Report Forms (eCRF).\n\nIt runs as a web service. It has been configured to run on http://localhost:8181.\n"
+    },
+    {
+      "description": "Open source selfhosted spreadsheet engine.",
+      "displayName": "IronCalc",
+      "icon": "/nix/store/cbkk751cnlnnh2g1nzvn3zwlwxpx5ihj-icon.svg",
+      "links": {
+        "docs": {
+          "description": null,
+          "text": "docs",
+          "url": "https://docs.ironcalc.com/"
+        },
+        "source": {
+          "description": null,
+          "text": "source",
+          "url": "https://github.com/ironcalc/IronCalc"
+        },
+        "website": {
+          "description": null,
+          "text": "website",
+          "url": "https://www.ironcalc.com"
+        }
+      },
+      "name": "ironcalc-app",
+      "ngi": {
+        "grants": {
+          "Commons": ["IronCalc-conditional", "IronCalc-NC"],
+          "Core": ["IronCalc"],
+          "Entrust": [],
+          "Review": []
+        }
+      },
+      "programs": {
+        "mainPackage": null,
+        "packages": [],
+        "runCommand": "",
+        "runtimes": {
+          "program": { "enable": false },
+          "shell": { "enable": false }
+        }
+      },
+      "recipePath": "recipes/apps/ironcalc-app/recipe.nix",
+      "result": "nixos-vm-config",
+      "services": {
+        "components": {
+          "ironcalc": {
+            "argv": [],
+            "command": "/nix/store/rgsdlvsdia0ci2zi208926qiz5isi5bf-ironcalc-0.7.1-unstable-2026-04-29/bin/ironcalc",
+            "configData": {},
+            "environment": {
+              "IRONCALC_DB_PATH": "/var/lib/ironcalc/ironcalc.sqlite",
+              "ROCKET_ADDRESS": "0.0.0.0"
+            },
+            "preStart": null,
+            "result": {
+              "configData": {},
+              "preStart": null,
+              "process": {
+                "argv": [
+                  "/nix/store/rgsdlvsdia0ci2zi208926qiz5isi5bf-ironcalc-0.7.1-unstable-2026-04-29/bin/ironcalc"
+                ]
+              }
+            }
+          }
+        },
+        "ports": ["8000:8000"],
+        "runtimes": {
+          "container": {
+            "composeFile": "/nix/store/7vfiaqx8pgw0nnqa0pdk1x4yp845jqqa-compose.yaml",
+            "enable": true,
+            "extraConfig": {},
+            "packages": [
+              "/nix/store/rgsdlvsdia0ci2zi208926qiz5isi5bf-ironcalc-0.7.1-unstable-2026-04-29"
+            ],
+            "result": "container",
+            "setup": "",
+            "tag": "latest"
+          },
+          "nixos": {
+            "enable": true,
+            "extraConfig": {
+              "imports": [
+                {
+                  "_file": "/nix/store/hzjyjs9hdsn2rwiz964m0594hyxbc8r9-source/forge/modules/apps/services/runtimes/nixos, via option perSystem.x86_64-linux.forge.apps.\"[definition 1-entry 4]\".services.runtimes.nixos.extraConfig",
+                  "imports": [{}]
+                }
+              ]
+            },
+            "packages": [
+              "/nix/store/rgsdlvsdia0ci2zi208926qiz5isi5bf-ironcalc-0.7.1-unstable-2026-04-29"
+            ],
+            "result": "nixos-vm-config",
+            "setup": "",
+            "vm": { "cores": 4, "diskSize": 4096, "memorySize": 2048 }
+          }
+        }
+      },
+      "test": {
+        "packages": [
+          "/nix/store/sm2nq18jjqp4x0sxpl6lrvwl9rx6mvj2-curl-8.19.0-bin"
+        ],
+        "result": "nixos-test",
+        "sandbox": true,
+        "script": "curl=\"curl --retry 8 --retry-max-time 120 --retry-all-errors\"\n$curl localhost:8000 | grep -q \"IronCalc\"\n",
+        "testScript": "machine.start()\nmachine.wait_for_unit(\"multi-user.target\")\nmachine.wait_for_unit(\"ironcalc.service\")\nmachine.succeed(\"/nix/store/ac0n9haj8mlhw28l1az1nw89yvd7fd48-ironcalc-app-test-script\")\n"
+      },
+      "usage": "IronCalc is an Open source spreadsheet engine and ecosystem.\n\n#### Access\n\nIroncalc will be available on [http://localhost:8000](http://localhost:8000).\n\nYou can specify a different port via `ROCKET_PORT`, and different database path with `IRONCALC_DB_PATH` environment variables.\n\n"
+    },
+    {
+      "description": "Formal verification tool for Verilog and Naja interchange format.",
+      "displayName": "Kepler Formal",
+      "icon": null,
+      "links": {
+        "docs": null,
+        "source": {
+          "description": null,
+          "text": "source",
+          "url": "https://github.com/keplertech/kepler-formal"
+        },
+        "website": null
+      },
+      "name": "kepler-formal-app",
+      "ngi": {
+        "grants": {
+          "Commons": ["Naja-LEC-TimingModelEngine"],
+          "Core": [],
+          "Entrust": [],
+          "Review": []
+        }
+      },
+      "programs": {
+        "mainPackage": null,
+        "packages": [
+          "/nix/store/4wvnr5n7qvmrqilf2vwxv26hf484y6r8-kepler-formal-1.0.0-unstable-2026-04-13"
+        ],
+        "runCommand": "",
+        "runtimes": {
+          "program": { "enable": false },
+          "shell": { "enable": true }
+        }
+      },
+      "recipePath": "recipes/apps/kepler-formal-app/recipe.nix",
+      "result": "nixos-vm-config",
+      "services": {
+        "components": {},
+        "ports": [],
+        "runtimes": {
+          "container": {
+            "composeFile": null,
+            "enable": false,
+            "extraConfig": {},
+            "packages": [],
+            "result": "container",
+            "setup": "",
+            "tag": "latest"
+          },
+          "nixos": {
+            "enable": false,
+            "extraConfig": {
+              "imports": [
+                {
+                  "_file": "/nix/store/hzjyjs9hdsn2rwiz964m0594hyxbc8r9-source/forge/modules/apps/services/runtimes/nixos, via option perSystem.x86_64-linux.forge.apps.\"[definition 1-entry 5]\".services.runtimes.nixos.extraConfig",
+                  "imports": [{}]
+                }
+              ]
+            },
+            "packages": [],
+            "result": "nixos-vm-config",
+            "setup": "",
+            "vm": { "cores": 4, "diskSize": 4096, "memorySize": 2048 }
+          }
+        }
+      },
+      "test": {
+        "packages": [],
+        "result": "nixos-test",
+        "sandbox": true,
+        "script": "echo \"Test script\"\n",
+        "testScript": "machine.start()\nmachine.wait_for_unit(\"multi-user.target\")\n\nmachine.succeed(\"/nix/store/8nyywjkvcvm2zd463c48hcdx482yb0ys-kepler-formal-app-test-script\")\n"
+      },
+      "usage": "Kepler Formal is a CLI tool for formal verification of logic equivalence between two netlists.\n\n#### Example\n\nDownload example Verilog files\n\n```\nmkdir example-data && cd example-data\n\nfor file in \\\n  tinyrocket.v \\\n  tinyrocket_edited.v \\\n  NangateOpenCellLibrary_typical.lib \\\n  fakeram45_1024x32.lib \\\n  fakeram45_64x32.lib \\\n  fakeram45_64x15.lib\ndo wget https://raw.githubusercontent.com/keplertech/kepler-formal/refs/heads/main/example/$file\ndone\n```\n\nRun program\n\n```\nkepler-formal -verilog \\\n  tinyrocket.v \\\n  tinyrocket_edited.v \\\n  NangateOpenCellLibrary_typical.lib \\\n  fakeram45_1024x32.lib \\\n  fakeram45_64x32.lib \\\n  fakeram45_64x15.lib\n```\n\n"
+    },
+    {
+      "description": "Modern full-featured open source secure mail server for low-maintenance self-hosted email.",
+      "displayName": "Mox",
+      "icon": "/nix/store/a89ljlphwycz7zikc76576y2pcrkgffi-icon.svg",
+      "links": {
+        "docs": {
+          "description": null,
+          "text": "docs",
+          "url": "https://www.xmox.nl/install/"
+        },
+        "source": {
+          "description": null,
+          "text": "source",
+          "url": "https://github.com/mjl-/mox"
+        },
+        "website": {
+          "description": null,
+          "text": "website",
+          "url": "https://www.xmox.nl/"
+        }
+      },
+      "name": "mox-app",
+      "ngi": {
+        "grants": {
+          "Commons": [],
+          "Core": ["Mox-Automation"],
+          "Entrust": ["Mox"],
+          "Review": ["Mox-API"]
+        }
+      },
+      "programs": {
+        "mainPackage": null,
+        "packages": [],
+        "runCommand": "",
+        "runtimes": {
+          "program": { "enable": false },
+          "shell": { "enable": false }
+        }
+      },
+      "recipePath": "recipes/apps/mox-app/recipe.nix",
+      "result": "nixos-vm-config",
+      "services": {
+        "components": {
+          "mox": {
+            "argv": ["-config", "/var/lib/mox/config/mox.conf", "serve"],
+            "command": "/nix/store/lb35vlj5lln7z9cdvgi0xk7hj0a27fpy-mox-0.0.15",
+            "configData": {
+              "domains.conf": {
+                "enable": true,
+                "name": "domains.conf",
+                "path": "domains.conf",
+                "source": "/nix/store/h3r212xpfs9dflz9zjsvm4namj38xyvc-domains.conf",
+                "text": null
+              },
+              "mox.conf": {
+                "enable": true,
+                "name": "mox.conf",
+                "path": "mox.conf",
+                "source": "/nix/store/klbsad8a2i6q33b0y701qqic3mhg50az-mox.conf",
+                "text": null
+              }
+            },
+            "environment": {},
+            "preStart": "/nix/store/cdi0klzxpy4mnyfbnkzj6lv6dynq4qki-mox-pre-start",
+            "result": {
+              "configData": {
+                "domains.conf": {
+                  "enable": true,
+                  "name": "domains.conf",
+                  "path": "domains.conf",
+                  "source": "/nix/store/h3r212xpfs9dflz9zjsvm4namj38xyvc-domains.conf",
+                  "text": null
+                },
+                "mox.conf": {
+                  "enable": true,
+                  "name": "mox.conf",
+                  "path": "mox.conf",
+                  "source": "/nix/store/klbsad8a2i6q33b0y701qqic3mhg50az-mox.conf",
+                  "text": null
+                }
+              },
+              "preStart": "/nix/store/cdi0klzxpy4mnyfbnkzj6lv6dynq4qki-mox-pre-start",
+              "process": {
+                "argv": [
+                  "/nix/store/lb35vlj5lln7z9cdvgi0xk7hj0a27fpy-mox-0.0.15/bin/mox",
+                  "-config",
+                  "/var/lib/mox/config/mox.conf",
+                  "serve"
+                ]
+              }
+            }
+          }
+        },
+        "ports": ["8080:8080", "8081:8081", "8082:8082"],
+        "runtimes": {
+          "container": {
+            "composeFile": null,
+            "enable": true,
+            "extraConfig": {},
+            "packages": [
+              "/nix/store/4bwbk4an4bx7cb8xwffghvjjyfyl7m2i-bash-interactive-5.3p9",
+              "/nix/store/jjxngswsb214vb58qx485jhmilf0kxxy-coreutils-9.10",
+              "/nix/store/lb35vlj5lln7z9cdvgi0xk7hj0a27fpy-mox-0.0.15",
+              "/nix/store/8wf4hpgry7999a36xw1gvrg657vf6n3g-shadow-4.19.4"
+            ],
+            "result": "container",
+            "setup": "# Use a public DNSSEC-validating resolver\necho \"nameserver 8.8.8.8\" >> /etc/resolv.conf\n\n# Add mox group and user required by mox server\ngroupadd --system mox || true\nuseradd --system --no-create-home --shell /sbin/nologin --gid mox mox || true\n\n# Create Mox keys and data files\nif ! [ -d /var/lib/mox ]; then\n  mkdir -p /var/lib/mox && cd /var/lib/mox\n\n  # Generate DKIM keys\n  mkdir -p config/dkim\n  /nix/store/lb35vlj5lln7z9cdvgi0xk7hj0a27fpy-mox-0.0.15/bin/mox dkim genrsa > config/dkim/dkima.rsa2048.privatekey.pkcs8.pem\n  /nix/store/lb35vlj5lln7z9cdvgi0xk7hj0a27fpy-mox-0.0.15/bin/mox dkim genrsa > config/dkim/dkimb.rsa2048.privatekey.pkcs8.pem\n\n  # Create data directory\n  mkdir data\n  chown mox:mox data\nfi\n",
+            "tag": "latest"
+          },
+          "nixos": {
+            "enable": true,
+            "extraConfig": {
+              "imports": [
+                {
+                  "_file": "/nix/store/hzjyjs9hdsn2rwiz964m0594hyxbc8r9-source/recipes/apps/mox-app/recipe.nix, via option perSystem.x86_64-linux.forge.apps.\"[definition 1-entry 6]\".services.runtimes.nixos.extraConfig",
+                  "imports": [
+                    {
+                      "networking": {
+                        "enableIPv6": false,
+                        "nameservers": ["8.8.8.8"]
+                      },
+                      "users": {
+                        "groups": { "mox": {} },
+                        "users": {
+                          "mox": { "group": "mox", "isSystemUser": true }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "packages": [
+              "/nix/store/lb35vlj5lln7z9cdvgi0xk7hj0a27fpy-mox-0.0.15"
+            ],
+            "result": "nixos-vm-config",
+            "setup": "# Create Mox keys and data files\nif ! [ -d /var/lib/mox ]; then\n  mkdir -p /var/lib/mox && cd /var/lib/mox\n\n  # Generate DKIM keys\n  mkdir -p config/dkim\n  /nix/store/lb35vlj5lln7z9cdvgi0xk7hj0a27fpy-mox-0.0.15/bin/mox dkim genrsa > config/dkim/dkima.rsa2048.privatekey.pkcs8.pem\n  /nix/store/lb35vlj5lln7z9cdvgi0xk7hj0a27fpy-mox-0.0.15/bin/mox dkim genrsa > config/dkim/dkimb.rsa2048.privatekey.pkcs8.pem\n\n  # Create data directory\n  mkdir data\n  chown mox:mox data\nfi\n",
+            "vm": { "cores": 4, "diskSize": 4096, "memorySize": 2048 }
+          }
+        }
+      },
+      "test": {
+        "packages": [],
+        "result": "nixos-test",
+        "sandbox": true,
+        "script": "curl=\"curl --retry 20 --retry-max-time 120 --retry-all-errors\"\n\n$curl --location localhost:8080 | grep \"Mox Account\"\n$curl --location localhost:8081/admin | grep \"Mox Admin\"\n$curl --location localhost:8082/webmail | grep \"Mox Webmail\"\n",
+        "testScript": "machine.start()\nmachine.wait_for_unit(\"multi-user.target\")\nmachine.wait_for_unit(\"mox.service\")\nmachine.succeed(\"/nix/store/7gsx5lqxb9yrpamhxk9nc7v22vhcs8wp-mox-app-test-script\")\n"
+      },
+      "usage": "Mox is a modern, full-featured, open source secure mail server providing\nSMTP, IMAP4, webmail, SPF/DKIM/DMARC, and more.\n\n#### Administration\n\nIf running inside a container, connect to it with:\n```\npodman-compose -f result/mox-app/compose.yaml exec mox-app bash\n```\n\nSet admin password:\n```\necho \"adminpassword\" | mox -config /var/lib/mox/config/mox.conf setadminpassword\nchown mox /var/lib/mox/config/adminpasswd\n```\n\n#### URLs\n\n* Admin web interface: `http://localhost:8080`\n* Account web interface: `http://localhost:8081`\n* Webmail interface: `http://localhost:8081`\n\n"
+    },
+    {
+      "description": "Fair and privacy-focused web analytics.",
+      "displayName": "Offen",
+      "icon": "/nix/store/5d9qs5yzxb78qrk18hpjqsizr2ndjc0h-icon.svg",
+      "links": {
+        "docs": {
+          "description": null,
+          "text": "docs",
+          "url": "https://docs.offen.dev"
+        },
+        "source": {
+          "description": null,
+          "text": "source",
+          "url": "https://github.com/offen/offen"
+        },
+        "website": {
+          "description": null,
+          "text": "website",
+          "url": "https://www.offen.dev"
+        }
+      },
+      "name": "offen-app",
+      "ngi": {
+        "grants": {
+          "Commons": [],
+          "Core": [],
+          "Entrust": [],
+          "Review": ["offen", "OffenOne"]
+        }
+      },
+      "programs": {
+        "mainPackage": null,
+        "packages": [],
+        "runCommand": "",
+        "runtimes": {
+          "program": { "enable": false },
+          "shell": { "enable": false }
+        }
+      },
+      "recipePath": "recipes/apps/offen-app/recipe.nix",
+      "result": "nixos-vm-config",
+      "services": {
+        "components": {
+          "offen": {
+            "argv": ["serve"],
+            "command": "/nix/store/6gh0w9c9q3v5fg7k3qwa5yjhdiiabaqf-offen-0.0.0-unstable-2026-03-04",
+            "configData": {},
+            "environment": {
+              "OFFEN_DATABASE_CONNECTIONSTRING": "/var/lib/offen/offen.db",
+              "OFFEN_DATABASE_DIALECT": "sqlite3",
+              "OFFEN_SERVER_PORT": "3000"
+            },
+            "preStart": "/nix/store/jdvlbrj1i3xjc97f86gq6jmdizwkx38a-offen-pre-start",
+            "result": {
+              "configData": {},
+              "preStart": "/nix/store/jdvlbrj1i3xjc97f86gq6jmdizwkx38a-offen-pre-start",
+              "process": {
+                "argv": [
+                  "/nix/store/6gh0w9c9q3v5fg7k3qwa5yjhdiiabaqf-offen-0.0.0-unstable-2026-03-04/bin/offen",
+                  "serve"
+                ]
+              }
+            }
+          }
+        },
+        "ports": ["3000:3000"],
+        "runtimes": {
+          "container": {
+            "composeFile": null,
+            "enable": true,
+            "extraConfig": {},
+            "packages": [
+              "/nix/store/4bwbk4an4bx7cb8xwffghvjjyfyl7m2i-bash-interactive-5.3p9",
+              "/nix/store/jjxngswsb214vb58qx485jhmilf0kxxy-coreutils-9.10",
+              "/nix/store/6gh0w9c9q3v5fg7k3qwa5yjhdiiabaqf-offen-0.0.0-unstable-2026-03-04"
+            ],
+            "result": "container",
+            "setup": "",
+            "tag": "latest"
+          },
+          "nixos": {
+            "enable": true,
+            "extraConfig": {
+              "imports": [
+                {
+                  "_file": "/nix/store/hzjyjs9hdsn2rwiz964m0594hyxbc8r9-source/forge/modules/apps/services/runtimes/nixos, via option perSystem.x86_64-linux.forge.apps.\"[definition 1-entry 7]\".services.runtimes.nixos.extraConfig",
+                  "imports": [{}]
+                }
+              ]
+            },
+            "packages": [
+              "/nix/store/6gh0w9c9q3v5fg7k3qwa5yjhdiiabaqf-offen-0.0.0-unstable-2026-03-04"
+            ],
+            "result": "nixos-vm-config",
+            "setup": "",
+            "vm": { "cores": 4, "diskSize": 4096, "memorySize": 2048 }
+          }
+        }
+      },
+      "test": {
+        "packages": [],
+        "result": "nixos-test",
+        "sandbox": true,
+        "script": "curl=\"curl --retry 5 --retry-max-time 120 --retry-all-errors\"\n\nexport OFFEN_DATABASE_CONNECTIONSTRING=\"/var/lib/offen/offen.db\"\noffen setup -name test -email test@localhost -password test123456\n$curl localhost:3000 | grep \"Offen Fair Web Analytics\"\n",
+        "testScript": "machine.start()\nmachine.wait_for_unit(\"multi-user.target\")\nmachine.wait_for_unit(\"offen.service\")\nmachine.succeed(\"/nix/store/n02yyp7f8gyfij2mkqgb1qfx337vvm92-offen-app-test-script\")\n"
+      },
+      "usage": "Offen is a self-hosted web analytics server that gives operators insight\ninto usage while allowing users to access, review, and delete their own data.\n\n#### Access\n\nOpen the Offen interface at `http://localhost:3000`.\n\n#### Initial Setup\n\nCreate an account on first run:\n```\nexport OFFEN_DATABASE_CONNECTIONSTRING=\"/var/lib/offen/offen.db\"\noffen setup -name <account-name> -email <email> -password <password>\n```\n\n"
+    },
+    {
+      "description": "Example web API with database backend.",
+      "displayName": "Python Web Example",
+      "icon": null,
+      "links": {
+        "docs": {
+          "description": null,
+          "text": "docs",
+          "url": "https://github.com/imincik/python-web-example"
+        },
+        "source": {
+          "description": null,
+          "text": "source",
+          "url": "https://github.com/imincik/python-web-example"
+        },
+        "website": {
+          "description": null,
+          "text": "website",
+          "url": "https://github.com/imincik/python-web-example"
+        }
+      },
+      "name": "python-web-app",
+      "ngi": {
+        "grants": {
+          "Commons": ["Example 1", "Example 2"],
+          "Core": ["Example 1", "Example 2"],
+          "Entrust": [],
+          "Review": []
+        }
+      },
+      "programs": {
+        "mainPackage": null,
+        "packages": [],
+        "runCommand": "",
+        "runtimes": {
+          "program": { "enable": false },
+          "shell": { "enable": false }
+        }
+      },
+      "recipePath": "recipes/apps/python-web-app/recipe.nix",
+      "result": "nixos-vm-config",
+      "services": {
+        "components": {
+          "python-web": {
+            "argv": [],
+            "command": "/nix/store/1b8vz7wjr684fwx917mgynwdkk0mvw57-python-web-0.0.1",
+            "configData": {},
+            "environment": {},
+            "preStart": null,
+            "result": {
+              "configData": {},
+              "preStart": null,
+              "process": {
+                "argv": [
+                  "/nix/store/1b8vz7wjr684fwx917mgynwdkk0mvw57-python-web-0.0.1/bin/python-web"
+                ]
+              }
+            }
+          }
+        },
+        "ports": ["5000:5000"],
+        "runtimes": {
+          "container": {
+            "composeFile": "/nix/store/illmxczcqhyg30gjkd44wvw9ry1pl1vd-compose.yaml",
+            "enable": true,
+            "extraConfig": {},
+            "packages": [
+              "/nix/store/1b8vz7wjr684fwx917mgynwdkk0mvw57-python-web-0.0.1"
+            ],
+            "result": "container",
+            "setup": "",
+            "tag": "latest"
+          },
+          "nixos": {
+            "enable": true,
+            "extraConfig": {
+              "imports": [
+                {
+                  "_file": "/nix/store/hzjyjs9hdsn2rwiz964m0594hyxbc8r9-source/recipes/apps/python-web-app/recipe.nix, via option perSystem.x86_64-linux.forge.apps.\"[definition 1-entry 8]\".services.runtimes.nixos.extraConfig",
+                  "imports": [
+                    {
+                      "services": {
+                        "postgresql": {
+                          "authentication": "local all all trust\nhost all all 0.0.0.0/0 trust\nhost all all ::0/0 trust\n",
+                          "enable": true,
+                          "enableTCPIP": true
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "packages": [],
+            "result": "nixos-vm-config",
+            "setup": "",
+            "vm": { "cores": 4, "diskSize": 4096, "memorySize": 2048 }
+          }
+        }
+      },
+      "test": {
+        "packages": [],
+        "result": "nixos-test",
+        "sandbox": false,
+        "script": "curl=\"curl --retry 5 --retry-max-time 120 --retry-all-errors\"\n\n$curl -X POST localhost:5000/init\n\n$curl -X POST \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\"name\":\"username\"}' \\\n  localhost:5000/users\n\n$curl localhost:5000/users\n",
+        "testScript": "machine.start()\nmachine.wait_for_unit(\"multi-user.target\")\nmachine.wait_for_unit(\"python-web.service\")\nmachine.succeed(\"/nix/store/v63q52vvqxipjgxz4q6k79fvramf21pv-python-web-app-test-script\")\n"
+      },
+      "usage": "This is a simple example application that provides a web API for\nmanaging a list of users.\n\n* Initialize database\n```\ncurl -X POST localhost:5000/init\n```\n\n* Add a new user\n```\ncurl -X POST \\\n  --header \"Content-Type: application/json\" \\\n  --data '{\"name\":\"username\"}' \\\nlocalhost:5000/users\n```\n\n* Get list of all users\n```\ncurl localhost:5000/users\n```\n\n"
+    },
+    {
+      "description": "Web-based user interface for QLever SPARQL engine.",
+      "displayName": "QLever",
+      "icon": null,
+      "links": {
+        "docs": null,
+        "source": {
+          "description": null,
+          "text": "source",
+          "url": "https://github.com/ad-freiburg/qlever"
+        },
+        "website": {
+          "description": null,
+          "text": "website",
+          "url": "https://github.com/ad-freiburg/qlever"
+        }
+      },
+      "name": "qlever-app",
+      "ngi": {
+        "grants": {
+          "Commons": [],
+          "Core": [],
+          "Entrust": [],
+          "Review": ["QLever-similarity"]
+        }
+      },
+      "programs": {
+        "mainPackage": null,
+        "packages": [],
+        "runCommand": "",
+        "runtimes": {
+          "program": { "enable": false },
+          "shell": { "enable": false }
+        }
+      },
+      "recipePath": "recipes/apps/qlever-app/recipe.nix",
+      "result": "nixos-vm-config",
+      "services": {
+        "components": {
+          "qlever-server": {
+            "argv": [
+              "--qleverfile",
+              "/var/lib/qlever/Qleverfile",
+              "start",
+              "--run-in-foreground"
+            ],
+            "command": "/nix/store/i6cahzm14d255z9lz9c1jzn1ckqfl70j-qlever-control-0.5.46",
+            "configData": {
+              "service-data": {
+                "enable": true,
+                "name": "service-data",
+                "path": "olympics.nt",
+                "source": "/nix/store/w98g2rp0d0n2q0f535f1if2rgrjxi3p7-qlever-olympics-rdf-data-0-master-2023-01-01/olympics.nt",
+                "text": null
+              }
+            },
+            "environment": {},
+            "preStart": "/nix/store/j7sca0zj1bdk81m7haw7x7w0kd825xaa-qlever-server-pre-start",
+            "result": {
+              "configData": {
+                "service-data": {
+                  "enable": true,
+                  "name": "service-data",
+                  "path": "olympics.nt",
+                  "source": "/nix/store/w98g2rp0d0n2q0f535f1if2rgrjxi3p7-qlever-olympics-rdf-data-0-master-2023-01-01/olympics.nt",
+                  "text": null
+                }
+              },
+              "preStart": "/nix/store/j7sca0zj1bdk81m7haw7x7w0kd825xaa-qlever-server-pre-start",
+              "process": {
+                "argv": [
+                  "/nix/store/i6cahzm14d255z9lz9c1jzn1ckqfl70j-qlever-control-0.5.46/bin/qlever",
+                  "--qleverfile",
+                  "/var/lib/qlever/Qleverfile",
+                  "start",
+                  "--run-in-foreground"
+                ]
+              }
+            }
+          },
+          "qlever-ui": {
+            "argv": ["--bind=0.0.0.0:8080"],
+            "command": "/nix/store/h617qkqrypyqxk5sn16s327i46m281dq-qlever-ui-0-unstable-2026-04-16",
+            "configData": {},
+            "environment": {
+              "DJANGO_SETTINGS_MODULE": "qlever.settings",
+              "QLEVERUI_DATABASE_URL": "sqlite:////var/lib/qlever/db/qleverui.sqlite3"
+            },
+            "preStart": "/nix/store/xcq232csw64bcv0y484b95sfhfbnvimx-qlever-ui-pre-start",
+            "result": {
+              "configData": {},
+              "preStart": "/nix/store/xcq232csw64bcv0y484b95sfhfbnvimx-qlever-ui-pre-start",
+              "process": {
+                "argv": [
+                  "/nix/store/h617qkqrypyqxk5sn16s327i46m281dq-qlever-ui-0-unstable-2026-04-16/bin/qlever-ui",
+                  "--bind=0.0.0.0:8080"
+                ]
+              }
+            }
+          }
+        },
+        "ports": ["8080:8080", "7019:7019"],
+        "runtimes": {
+          "container": {
+            "composeFile": null,
+            "enable": true,
+            "extraConfig": { "WorkingDir": "/var/lib/qlever" },
+            "packages": [
+              "/nix/store/4bwbk4an4bx7cb8xwffghvjjyfyl7m2i-bash-interactive-5.3p9",
+              "/nix/store/jjxngswsb214vb58qx485jhmilf0kxxy-coreutils-9.10",
+              "/nix/store/h617qkqrypyqxk5sn16s327i46m281dq-qlever-ui-0-unstable-2026-04-16",
+              "/nix/store/m32bd1hka5jszdkrr0851954wrl0vm72-rsync-3.4.1",
+              "/nix/store/a5v2xxkxdzjr0iwas9mbkzkl78zgfj11-subversion-1.14.5",
+              "/nix/store/sm2nq18jjqp4x0sxpl6lrvwl9rx6mvj2-curl-8.19.0-bin",
+              "/nix/store/qw9z3la18lb6lpfk3n1pz70l4mmh87h0-qlever-0.5.46",
+              "/nix/store/i6cahzm14d255z9lz9c1jzn1ckqfl70j-qlever-control-0.5.46",
+              "/nix/store/d728bq0ajg6r80j9avj2mn82h3alhl88-unzip-6.0"
+            ],
+            "result": "container",
+            "setup": "WORKDIR=/var/lib/qlever\n\n# only copy db on first run so we don't overwrite it\nif [ ! -d \"$WORKDIR/db\" ]; then\n  rsync -a --chmod=u=rwX,g=rwX,o=rX /nix/store/h617qkqrypyqxk5sn16s327i46m281dq-qlever-ui-0-unstable-2026-04-16/opt/db \"$WORKDIR\"\nfi\n\nrsync -a --chmod=u=rwX,go=rX --exclude='/db/' /nix/store/h617qkqrypyqxk5sn16s327i46m281dq-qlever-ui-0-unstable-2026-04-16/opt/ \"$WORKDIR\"\n",
+            "tag": "latest"
+          },
+          "nixos": {
+            "enable": true,
+            "extraConfig": {
+              "imports": [
+                {
+                  "_file": "/nix/store/hzjyjs9hdsn2rwiz964m0594hyxbc8r9-source/recipes/apps/qlever-app/recipe.nix, via option perSystem.x86_64-linux.forge.apps.\"[definition 1-entry 9]\".services.runtimes.nixos.extraConfig",
+                  "imports": [
+                    {
+                      "systemd": {
+                        "services": {
+                          "qlever-app-setup": {
+                            "path": [
+                              "/nix/store/m32bd1hka5jszdkrr0851954wrl0vm72-rsync-3.4.1"
+                            ],
+                            "serviceConfig": {
+                              "DynamicUser": true,
+                              "Group": "qlever-ui",
+                              "StateDirectory": ["qlever"],
+                              "User": "qlever-ui",
+                              "WorkingDirectory": "/var/lib/qlever"
+                            }
+                          },
+                          "qlever-server": {
+                            "path": [
+                              "/nix/store/sm2nq18jjqp4x0sxpl6lrvwl9rx6mvj2-curl-8.19.0-bin",
+                              "/nix/store/qw9z3la18lb6lpfk3n1pz70l4mmh87h0-qlever-0.5.46",
+                              "/nix/store/i6cahzm14d255z9lz9c1jzn1ckqfl70j-qlever-control-0.5.46",
+                              "/nix/store/d728bq0ajg6r80j9avj2mn82h3alhl88-unzip-6.0"
+                            ],
+                            "serviceConfig": {
+                              "DynamicUser": true,
+                              "Group": "qlever-ui",
+                              "StateDirectory": ["qlever"],
+                              "User": "qlever-ui",
+                              "WorkingDirectory": "/var/lib/qlever"
+                            }
+                          },
+                          "qlever-ui": {
+                            "after": [
+                              "qlever-app-setup.service",
+                              "qlever-server.service"
+                            ],
+                            "path": [
+                              "/nix/store/h617qkqrypyqxk5sn16s327i46m281dq-qlever-ui-0-unstable-2026-04-16",
+                              "/nix/store/a5v2xxkxdzjr0iwas9mbkzkl78zgfj11-subversion-1.14.5"
+                            ],
+                            "requires": [
+                              "qlever-app-setup.service",
+                              "qlever-server.service"
+                            ],
+                            "serviceConfig": {
+                              "DynamicUser": true,
+                              "Group": "qlever-ui",
+                              "StateDirectory": ["qlever"],
+                              "User": "qlever-ui",
+                              "WorkingDirectory": "/var/lib/qlever"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "packages": [],
+            "result": "nixos-vm-config",
+            "setup": "WORKDIR=/var/lib/qlever\n\n# only copy db on first run so we don't overwrite it\nif [ ! -d \"$WORKDIR/db\" ]; then\n  rsync -a --chmod=u=rwX,g=rwX,o=rX /nix/store/h617qkqrypyqxk5sn16s327i46m281dq-qlever-ui-0-unstable-2026-04-16/opt/db \"$WORKDIR\"\nfi\n\nrsync -a --chmod=u=rwX,go=rX --exclude='/db/' /nix/store/h617qkqrypyqxk5sn16s327i46m281dq-qlever-ui-0-unstable-2026-04-16/opt/ \"$WORKDIR\"\n",
+            "vm": { "cores": 4, "diskSize": 4096, "memorySize": 2048 }
+          }
+        }
+      },
+      "test": {
+        "packages": [],
+        "result": "nixos-test",
+        "sandbox": true,
+        "script": "curl=\"curl --retry 40 --retry-max-time 240 --retry-all-errors\"\n\nsleep 30\n\n# UI accessible\n$curl --location localhost:8080 | grep -i \"qlever\"\n\nsleep 30\n\n# query indexed data\nresult=$($curl -s localhost:7019 \\\n  -H \"Accept: text/tab-separated-values\" \\\n  --data-urlencode \"query=SELECT * WHERE { ?s ?p ?o } LIMIT 10\")\necho \"$result\"\ntest \"$(printf '%s\\n' \"$result\" | wc -l)\" -eq 11\n",
+        "testScript": "machine.start()\nmachine.wait_for_unit(\"multi-user.target\")\nmachine.wait_for_unit(\"qlever-server.service\")\nmachine.wait_for_unit(\"qlever-ui.service\")\nmachine.succeed(\"/nix/store/m9xjn1r61mcks2zpr4zcaz9v6yg28psc-qlever-app-test-script\")\n"
+      },
+      "usage": "By default, the Olympics dataset is downloaded and indexed on startup.\nTo use a different dataset, choose one from the [available use cases](https://docs.qlever.dev/use-cases) and update your `./Qleverfile` accordingly.\n\nOnce indexing is complete, open the UI in your browser at `http://localhost:8080` and run the following query:\n\n```sparql\nSELECT * WHERE { ?s ?p ?o } LIMIT 10\n```\n\nIf everything is working, results will appear below the input field.\n\n"
+    },
+    {
+      "description": "Memory-safe implementation of sudo and su.",
+      "displayName": "sudo-rs",
+      "icon": "/nix/store/sbznl0zai2k54hnsrhww3yni7b29xhi4-icon.svg",
+      "links": {
+        "docs": null,
+        "source": {
+          "description": null,
+          "text": "source",
+          "url": "https://github.com/trifectatechfoundation/sudo-rs"
+        },
+        "website": null
+      },
+      "name": "sudo-rs-app",
+      "ngi": {
+        "grants": {
+          "Commons": [],
+          "Core": ["sudo-rs"],
+          "Entrust": [],
+          "Review": []
+        }
+      },
+      "programs": {
+        "mainPackage": "/nix/store/5a2c98jw46qwk2bkp2pb3ck3666k0cj6-sudo-rs-0.2.13",
+        "packages": [
+          "/nix/store/5a2c98jw46qwk2bkp2pb3ck3666k0cj6-sudo-rs-0.2.13"
+        ],
+        "runCommand": "sudo",
+        "runtimes": {
+          "program": { "enable": true },
+          "shell": { "enable": true }
+        }
+      },
+      "recipePath": "recipes/apps/sudo-rs-app/recipe.nix",
+      "result": "nixos-vm-config",
+      "services": {
+        "components": {},
+        "ports": [],
+        "runtimes": {
+          "container": {
+            "composeFile": null,
+            "enable": false,
+            "extraConfig": {},
+            "packages": [],
+            "result": "container",
+            "setup": "",
+            "tag": "latest"
+          },
+          "nixos": {
+            "enable": false,
+            "extraConfig": {
+              "imports": [
+                {
+                  "_file": "/nix/store/hzjyjs9hdsn2rwiz964m0594hyxbc8r9-source/forge/modules/apps/services/runtimes/nixos, via option perSystem.x86_64-linux.forge.apps.\"[definition 1-entry 10]\".services.runtimes.nixos.extraConfig",
+                  "imports": [{}]
+                }
+              ]
+            },
+            "packages": [],
+            "result": "nixos-vm-config",
+            "setup": "",
+            "vm": { "cores": 4, "diskSize": 4096, "memorySize": 2048 }
+          }
+        }
+      },
+      "test": {
+        "packages": [],
+        "result": "nixos-test",
+        "sandbox": true,
+        "script": "echo \"Test script\"\n",
+        "testScript": "machine.start()\nmachine.wait_for_unit(\"multi-user.target\")\n\nmachine.succeed(\"/nix/store/152nncg1mp1p7qqs63s6g2vy41xaqn8m-sudo-rs-app-test-script\")\n"
+      },
+      "usage": "sudo-rs is a memory-safe Rust reimplementation of the sudo and su utilities.\n\n#### Example\n\nRun a command as root\n\n```\nsudo <command>\n```\n\nSwitch to another user\n\n```\nsu - <username>\n```\n\nEdit the sudoers file safely\n\n```\nvisudo\n```\n"
+    },
+    {
+      "description": "Web radio streaming system.",
+      "displayName": "Tau",
+      "icon": null,
+      "links": {
+        "docs": null,
+        "source": {
+          "description": null,
+          "text": "source",
+          "url": "https://github.com/tau-org"
+        },
+        "website": null
+      },
+      "name": "tau-app",
+      "ngi": {
+        "grants": {
+          "Commons": [],
+          "Core": ["Tau"],
+          "Entrust": [],
+          "Review": []
+        }
+      },
+      "programs": {
+        "mainPackage": null,
+        "packages": [
+          "/nix/store/zjra88cl2rs7lxgd1aagmhd04x35dkgh-tau-radio-0.2.101-unstable-2025-12-17"
+        ],
+        "runCommand": "",
+        "runtimes": {
+          "program": { "enable": false },
+          "shell": { "enable": true }
+        }
+      },
+      "recipePath": "recipes/apps/tau-app/recipe.nix",
+      "result": "nixos-vm-config",
+      "services": {
+        "components": {
+          "tau-tower": {
+            "argv": [],
+            "command": "/nix/store/m6y917w0w9bcsxk3wd0dlzi2k7bwz2rf-tau-tower-0.2.2-beta-unstable-2026-03-14",
+            "configData": {
+              "tau/tower.toml": {
+                "enable": true,
+                "name": "tau/tower.toml",
+                "path": "tau/tower.toml",
+                "source": "/nix/store/l8w2spmpwm1cif4wsnjajr4q39287k2w-config.toml",
+                "text": null
+              }
+            },
+            "environment": {},
+            "preStart": null,
+            "result": {
+              "configData": {
+                "tau/tower.toml": {
+                  "enable": true,
+                  "name": "tau/tower.toml",
+                  "path": "tau/tower.toml",
+                  "source": "/nix/store/l8w2spmpwm1cif4wsnjajr4q39287k2w-config.toml",
+                  "text": null
+                }
+              },
+              "preStart": null,
+              "process": {
+                "argv": [
+                  "/nix/store/m6y917w0w9bcsxk3wd0dlzi2k7bwz2rf-tau-tower-0.2.2-beta-unstable-2026-03-14/bin/tau-tower"
+                ]
+              }
+            }
+          }
+        },
+        "ports": ["3001:3001", "3002:3002"],
+        "runtimes": {
+          "container": {
+            "composeFile": null,
+            "enable": true,
+            "extraConfig": {},
+            "packages": [
+              "/nix/store/m6y917w0w9bcsxk3wd0dlzi2k7bwz2rf-tau-tower-0.2.2-beta-unstable-2026-03-14"
+            ],
+            "result": "container",
+            "setup": "",
+            "tag": "latest"
+          },
+          "nixos": {
+            "enable": true,
+            "extraConfig": {
+              "imports": [
+                {
+                  "_file": "/nix/store/hzjyjs9hdsn2rwiz964m0594hyxbc8r9-source/forge/modules/apps/services/runtimes/nixos, via option perSystem.x86_64-linux.forge.apps.\"[definition 1-entry 11]\".services.runtimes.nixos.extraConfig",
+                  "imports": [{}]
+                }
+              ]
+            },
+            "packages": [
+              "/nix/store/m6y917w0w9bcsxk3wd0dlzi2k7bwz2rf-tau-tower-0.2.2-beta-unstable-2026-03-14"
+            ],
+            "result": "nixos-vm-config",
+            "setup": "",
+            "vm": { "cores": 4, "diskSize": 4096, "memorySize": 2048 }
+          }
+        }
+      },
+      "test": {
+        "packages": [],
+        "result": "nixos-test",
+        "sandbox": true,
+        "script": "curl=\"curl --retry 5 --retry-max-time 120 --retry-all-errors\"\n\n$curl localhost:3002 | grep \"Audio Stream\"\n",
+        "testScript": "machine.start()\nmachine.wait_for_unit(\"multi-user.target\")\nmachine.wait_for_unit(\"tau-tower.service\")\nmachine.succeed(\"/nix/store/x39f1vyc7gqifl1ffca2m7rwxm15r13v-tau-app-test-script\")\n"
+      },
+      "usage": "This app provides both the _tau-tower_ server and the _tau-radio_ client.\n\n#### Tau Tower\nService for broadcasting audio to clients.\n\nPorts\n- Listen: 3001\n- Broadcast: 3002\n\n\n#### Tau Radio\nClient CLI for capturing audio from your device and streaming it to _tau-tower_.\n\nUsage:\n```\ntau-radio --username <user> --password <pass> --ip <server-ip> --port <server-port>\n```\n\n"
+    }
+  ],
+  "packages": [
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "doCheck": false,
+          "env": { "OPENSSL_NO_VENDOR": true, "RUSTC_BOOTSTRAP": true }
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "sha256-GPj8qhfKgfAadQD9DJafN4ec8L6oY62PS/w/ljkPHpw=",
+          "enable": true,
+          "packages": {
+            "build": [
+              "/nix/store/v7mjkia7ki79s5i24ldbzq1khalhgzk0-pkg-config-wrapper-0.29.2"
+            ],
+            "check": [],
+            "run": [
+              "/nix/store/2di90l89y2ygdy3rbws7dhg9nrvd3pnx-openssl-3.6.1-bin"
+            ]
+          }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Encrypted e-mail storage over Garage",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://aerogramme.deuxfleurs.fr/",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "European Union Public License 1.2",
+        "redistributable": true,
+        "shortName": "eupl12",
+        "spdxId": "EUPL-1.2",
+        "url": "https://spdx.org/licenses/EUPL-1.2.html"
+      },
+      "mainProgram": "aerogramme",
+      "name": "aerogramme",
+      "recipePath": "recipes/packages/aerogramme/recipe.nix",
+      "source": {
+        "git": "git:https://git.deuxfleurs.fr/Deuxfleurs/aerogramme?tag=0.3.0",
+        "hash": "sha256-ER+P/XGqNzTLwDLK5EBZq/Dl29ZZKl2FdxDb+oLEJ8Y=",
+        "patches": [
+          "/nix/store/vm9hjb92ml4nbaj6ia51pd5dini6j3wr-0001-update-time-rs.patch"
+        ],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": {
+        "packages": [],
+        "script": "aerogramme --version | grep -E \"aerogramme [0-9]*\\.[0-9]*\\.[0-9]*\"\n"
+      },
+      "version": "0.3.0"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "postPatch": "# setup.cfg lists python-tlsh but nixpkgs provides it as tlsh\nsubstituteInPlace setup.cfg \\\n  --replace-fail \"python-tlsh\" \"tlsh\"\n\n# bang package uses implicit namespace packages (no __init__.py),\n# so switch to find_namespace_packages to ensure it's included in the wheel\nsubstituteInPlace setup.cfg \\\n  --replace-fail \"packages = find:\" \"packages = find_namespace:\"\n\n# pytest is incorrectly listed in install_requires upstream\nsubstituteInPlace setup.cfg \\\n  --replace-fail $'\\tpytest\\n' \"\"\n",
+          "preBuild": "# Compile Kaitai Struct .ksy parsers to Python (bang/parsers/**/*.py)\nmake -C src\n"
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": true,
+          "importsCheck": ["bang"],
+          "packages": {
+            "build": [
+              "/nix/store/wrrcvdj78x4qd94wgp5ip7cysqbdk3x9-kaitai-struct-compiler-0.11"
+            ],
+            "build-system": [
+              "/nix/store/2d3zqjxf1vgry5mci1sv5iicnhnrf882-python3.13-setuptools-80.10.1",
+              "/nix/store/g6w2vgb9s4kxv3ydvaj0xn5r01s0s2d9-python3.13-wheel-0.46.1"
+            ],
+            "check": [],
+            "dependencies": [
+              "/nix/store/ks8l7msyld10vgb6z79z94r2mxpxx1i2-python3.13-deepdiff-8.6.2",
+              "/nix/store/xyzhy2zl3b53mr701i0qzivgfl5zfl8b-python3.13-kaitaistruct-0.11",
+              "/nix/store/39z9wjn1q9dscna36vfzqd7zypcb26yj-python3.13-parameterized-0.9.0",
+              "/nix/store/3822cdlrqzlxrmy0wfzb971w01sp7sz5-python3.13-tlsh-5.0.0",
+              "/nix/store/7naqar32amwq0ml5psa99qfvdvny7g1p-python3.13-python-snappy-0.7.3",
+              "/nix/store/yc234x2hk4y8c5za5hlva7bkn0q59nhp-python3.13-pillow-12.2.0",
+              "/nix/store/rf18wi6fpk19infxya248g36f4qz5vmd-python3.13-lz4-4.4.5",
+              "/nix/store/kpir4i2pxrcqmajb586wkjsv26rh9lzw-python3.13-icalendar-6.3.2",
+              "/nix/store/rak50c5lnbmc7jv40ga2wqwgxj3x1pr6-python3.13-dockerfile-parse-2.0.1",
+              "/nix/store/vkvbs4hizrpgmilx2a1lc5152rjx92py-python3.13-defusedxml-0.8.0rc2",
+              "/nix/store/mjxnlw5332hj31nqvidac0ki5axmw5i1-python3.13-mutf8-1.0.6",
+              "/nix/store/yzvdlvsykd9myxnqplz823br0p5l8d1w-python3.13-brotli-1.2.0",
+              "/nix/store/n0bfn4d17vh8fjwijxv5axy9fpnrajb4-python3.13-pyaxmlparser-0.3.31",
+              "/nix/store/jl0mxihyizv77l66mzbvmv49iiri72sd-python3.13-pyyaml-6.0.3",
+              "/nix/store/xmhpad33gmh266alim4956nxsn8xll7k-python3.13-telfhash-0.9.8",
+              "/nix/store/grmk89lswn91gd1a986h2064lkaymc3v-python3.13-python-lzo-1.16",
+              "/nix/store/2q9wqkcq5d0k7p0fab1c2srpnkyscmqx-python3.13-zstd-1.5.7.3",
+              "/nix/store/2r50n26pyqh2nmh3d6rvm7m2g3vh5sgs-python3.13-protobuf-7.34.1",
+              "/nix/store/77p6rnrhbc14aaw7iwf6d7vxl89qa9kj-python3.13-click-8.3.1",
+              "/nix/store/la401v3v5zvznhm006ak1q3d2gnryvq8-python3.13-rich-14.3.3",
+              "/nix/store/6kaqaxak701dnvsm33xj5761nn11s8hc-python3.13-pyahocorasick-2.3.1"
+            ],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": ["kaitaistruct", "python-tlsh"]
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Binary Analysis Next Generation framework for recursive unpacking and analysis of binary files.",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://github.com/armijnhemel/binaryanalysis-ng",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "GNU General Public License v3.0 only",
+        "redistributable": true,
+        "shortName": "gpl3Only",
+        "spdxId": "GPL-3.0-only",
+        "url": "https://spdx.org/licenses/GPL-3.0-only.html"
+      },
+      "mainProgram": "bang",
+      "name": "bang",
+      "recipePath": "recipes/packages/bang/recipe.nix",
+      "source": {
+        "git": "github:armijnhemel/binaryanalysis-ng/6e9b43af6d23e5a8f201ed355511a620d6f2f52e",
+        "hash": "sha256-nTizHleLiCiyVguxmXa3t3MckZ3IiMSjGdza4cCQZhs=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": {
+        "packages": [],
+        "script": "echo \"Test data\" > test-file.txt\nbang scan -v -u bang-results ./test-file.txt\n"
+      },
+      "version": "0-master-2026-04-14"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {},
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": true,
+          "importsCheck": ["helium"],
+          "packages": {
+            "build": [],
+            "build-system": [
+              "/nix/store/2d3zqjxf1vgry5mci1sv5iicnhnrf882-python3.13-setuptools-80.10.1"
+            ],
+            "check": [],
+            "dependencies": [
+              "/nix/store/sahyncwcfqfslwk7c8ylh4fxff8174vl-python3.13-selenium-4.40.0"
+            ],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Lighter browser automation based on Selenium.",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://github.com/mherrmann/helium",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "MIT License",
+        "redistributable": true,
+        "shortName": "mit",
+        "spdxId": "MIT",
+        "url": "https://spdx.org/licenses/MIT.html"
+      },
+      "mainProgram": "",
+      "name": "helium",
+      "recipePath": "recipes/packages/helium/recipe.nix",
+      "source": {
+        "git": "github:mherrmann/helium/v7.0.0",
+        "hash": "sha256-SGLxP2OOzosLpZn/DgIJN3BnbUeg8cXE1HhKBF4EpyM=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": {
+        "packages": [],
+        "script": "python -c \"import helium; print(helium.__doc__)\"\n"
+      },
+      "version": "7.0.0"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {},
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": true,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Hello package built from source code tarball.",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://www.gnu.org/software/hello",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "GNU General Public License v3.0 or later",
+        "redistributable": true,
+        "shortName": "gpl3Plus",
+        "spdxId": "GPL-3.0-or-later",
+        "url": "https://spdx.org/licenses/GPL-3.0-or-later.html"
+      },
+      "mainProgram": "hello",
+      "name": "hello",
+      "recipePath": "recipes/packages/hello/recipe.nix",
+      "source": {
+        "git": null,
+        "hash": "sha256-jZkUKv2SV28wsM18tCqNxoCZmLxdYH2Idh9RLibH2yA=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": "mirror://gnu/hello/hello-2.12.1.tar.gz"
+      },
+      "test": { "packages": [], "script": "hello | grep \"Hello, world\"\n" },
+      "version": "2.12.1"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "__structuredAttrs": true,
+          "dontUnpack": true,
+          "installPhase": "mkdir -p $out/bin\ncat > $out/bin/ironcalc <<EOF\n#!/nix/store/i27rhb3nr65rkrwz36bchkwmav6ggsmn-bash-5.3p9/bin/bash\nset -euo pipefail\n\nexport PATH=\"\\$PATH\":/nix/store/jjxngswsb214vb58qx485jhmilf0kxxy-coreutils-9.10/bin:/nix/store/67cm7qx8s210dwkq64vqbf3q9z62ddyg-sqlite-3.51.2-bin/bin:/nix/store/2458rr1ghdwdn16b3k14zppdw4i1217c-ironcalc-server-0.7.1-unstable-2026-04-29/bin\n\nIRONCALC_DB_PATH=\"\\${IRONCALC_DB_PATH:-ironcalc.sqlite}\"\nmkdir -p \"\\$(dirname \"\\$IRONCALC_DB_PATH\")\"\n\nif [ ! -f \"\\$IRONCALC_DB_PATH\" ]; then\n  echo \"Initializing database...\"\n  sqlite3 \"\\$IRONCALC_DB_PATH\" < \"/nix/store/2458rr1ghdwdn16b3k14zppdw4i1217c-ironcalc-server-0.7.1-unstable-2026-04-29/share/ironcalc/init_db.sql\"\nfi\n\nexport ROCKET_DATABASES=\"{ironcalc={url=\\\"\\$IRONCALC_DB_PATH\\\"}}\"\nexport IRONCALC_WEBAPP_DIR=\"\\${IRONCALC_WEBAPP_DIR:-/nix/store/i05im1ik3mvbkzk5fbb5rl9gksakqhmz-ironcalc-frontend-0.7.1-unstable-2026-04-29}\"\nexec ironcalc_server \"\\$@\"\nEOF\nchmod +x $out/bin/ironcalc\n\nln -s /nix/store/mmmhydb11c39rzjwf152dw1ch8vfqkjx-ironcalc-tools-0.7.1-unstable-2026-04-29/bin/xlsx_2_icalc $out/bin/xlsx_2_icalc\n",
+          "strictDeps": true
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": true,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Open source selfhosted spreadsheet engine",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://www.ironcalc.com",
+      "license": [
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "MIT License",
+          "redistributable": true,
+          "shortName": "mit",
+          "spdxId": "MIT",
+          "url": "https://spdx.org/licenses/MIT.html"
+        },
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "Apache License 2.0",
+          "redistributable": true,
+          "shortName": "asl20",
+          "spdxId": "Apache-2.0",
+          "url": "https://spdx.org/licenses/Apache-2.0.html"
+        }
+      ],
+      "mainProgram": "ironcalc",
+      "name": "ironcalc",
+      "recipePath": "recipes/packages/ironcalc/recipe.nix",
+      "source": {
+        "git": "github:ironcalc/ironcalc/8461ff71347ab19145cd7ad50ef829181ba765c2",
+        "hash": "sha256-vjI3M+hS9bXK8QQlopAy6f4dCISfQHGMvN9sMNKp88Q=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0.7.1-unstable-2026-04-29"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "buildPhase": "mkdir -p src/public\ncp -v src/*.svg src/*.png src/public/ || true\n\nnpm run build > tmp 2>&1\n",
+          "installPhase": "mkdir -p $out/share/doc/ironcalc\ncp -r src/.vitepress/dist/* $out/share/doc/ironcalc/\n",
+          "postPatch": "cd docs\n"
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": true,
+          "npmDepsHash": "sha256-lH4HUUiVSGcF/5cSse0l2ZWial3tkwOO8peb5Wl35rI=",
+          "npmInstallFlags": [],
+          "packages": {
+            "build": [
+              "/nix/store/v27rbg5dj4k7ddgqfd1f3mq5na417yac-git-minimal-2.53.0"
+            ],
+            "check": [],
+            "run": []
+          }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Ironcalc documentation site",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://docs.ironcalc.com",
+      "license": [
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "MIT License",
+          "redistributable": true,
+          "shortName": "mit",
+          "spdxId": "MIT",
+          "url": "https://spdx.org/licenses/MIT.html"
+        },
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "Apache License 2.0",
+          "redistributable": true,
+          "shortName": "asl20",
+          "spdxId": "Apache-2.0",
+          "url": "https://spdx.org/licenses/Apache-2.0.html"
+        }
+      ],
+      "mainProgram": "",
+      "name": "ironcalc-docs",
+      "recipePath": "recipes/packages/ironcalc-docs/recipe.nix",
+      "source": {
+        "git": "github:ironcalc/ironcalc/8461ff71347ab19145cd7ad50ef829181ba765c2",
+        "hash": "sha256-vjI3M+hS9bXK8QQlopAy6f4dCISfQHGMvN9sMNKp88Q=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0.7.1-unstable-2026-04-29"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "installPhase": "mkdir -p $out\ncp -r dist/. $out\n",
+          "postPatch": "chmod -R u+w ../../..\n\n# wasm location fix\nmkdir -p ../../../bindings/wasm/pkg\ncp -rv /nix/store/956rpmnpn93ipnwv9qp7n0cfh6q9vyjq-ironcalc-wasm-0.7.1-unstable-2026-04-29/. ../../../bindings/wasm/pkg/\n\nrm -rf ../../IronCalc\ncp -r /nix/store/2r8cfy38x1za7qhdzfxmrvlszf84nz82-ironcalc-widget-0.7.1-unstable-2026-04-29 ../../IronCalc\nchmod -R u+w ../../IronCalc\n",
+          "preBuild": "# wasm resolution fix\nrm -rf node_modules/@ironcalc/wasm\nmkdir -p node_modules/@ironcalc\ncp -rv /nix/store/956rpmnpn93ipnwv9qp7n0cfh6q9vyjq-ironcalc-wasm-0.7.1-unstable-2026-04-29/. node_modules/@ironcalc/wasm\n\n# workbook resolution fix\nrm -rf node_modules/@ironcalc/workbook\nmkdir -p node_modules/@ironcalc\ncp -rv /nix/store/2r8cfy38x1za7qhdzfxmrvlszf84nz82-ironcalc-widget-0.7.1-unstable-2026-04-29/. node_modules/@ironcalc/workbook\n",
+          "sourceRoot": "source/webapp/app.ironcalc.com/frontend"
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": true,
+          "npmDepsHash": "sha256-QVpUV3dxaqiWCF8RC1MR2ylYC500Lbp5pJgzzOrF20c=",
+          "npmInstallFlags": [],
+          "packages": {
+            "build": [
+              "/nix/store/956rpmnpn93ipnwv9qp7n0cfh6q9vyjq-ironcalc-wasm-0.7.1-unstable-2026-04-29",
+              "/nix/store/2r8cfy38x1za7qhdzfxmrvlszf84nz82-ironcalc-widget-0.7.1-unstable-2026-04-29"
+            ],
+            "check": [],
+            "run": []
+          }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Ironcalc frontend package",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://www.ironcalc.com",
+      "license": [
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "MIT License",
+          "redistributable": true,
+          "shortName": "mit",
+          "spdxId": "MIT",
+          "url": "https://spdx.org/licenses/MIT.html"
+        },
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "Apache License 2.0",
+          "redistributable": true,
+          "shortName": "asl20",
+          "spdxId": "Apache-2.0",
+          "url": "https://spdx.org/licenses/Apache-2.0.html"
+        }
+      ],
+      "mainProgram": "",
+      "name": "ironcalc-frontend",
+      "recipePath": "recipes/packages/ironcalc-frontend/recipe.nix",
+      "source": {
+        "git": "github:ironcalc/ironcalc/8461ff71347ab19145cd7ad50ef829181ba765c2",
+        "hash": "sha256-vjI3M+hS9bXK8QQlopAy6f4dCISfQHGMvN9sMNKp88Q=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0.7.1-unstable-2026-04-29"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "cargoDeps": "/nix/store/fj4xl5mb6rrnv6zpwiqnl5ak8pcz2wqr-cargo-deps-vendor",
+          "cargoRoot": "../..",
+          "checkPhase": "pnpm run test\n",
+          "installPhase": "mkdir -p $out/lib/node_modules/@ironcalc/nodejs\ncp index.js index.d.ts package.json *.node $out/lib/node_modules/@ironcalc/nodejs/\n",
+          "postPatch": "chmod -R u+w ../..\n"
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": true,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": {
+            "build": [
+              "/nix/store/qd70v8g0561vm8m33kmnp79z00cgyi5n-gcc-wrapper-15.2.0",
+              "/nix/store/v7mjkia7ki79s5i24ldbzq1khalhgzk0-pkg-config-wrapper-0.29.2",
+              "/nix/store/785jidgnryzj566s25s3rb262d4g5znb-nodejs-24.14.1",
+              "/nix/store/z382dzkk7snk51ka6n4f3b953dcdm8fc-cargo-1.94.1",
+              "/nix/store/ph8jb0mw89p4lfshpp36z70l6r4kg3vh-rustc-wrapper-1.94.1",
+              "/nix/store/4kga8nrrdkkd94abvmpjqa99gnlyh628-cargo-setup-hook.sh",
+              "/nix/store/7mm8iz0ln6n38ni4ahz3gmzr00b3nd9n-cargo-check-hook.sh",
+              "/nix/store/50d0sa775dqww34ap59s2kb5jb234qmn-writable-tmpdir-as-home-hook"
+            ],
+            "check": [],
+            "run": []
+          },
+          "pnpmDepsHash": "sha256-q0PTXKAX0mhrMKMnFzV65YU948lh+/rGn9ttWzBfdNc=",
+          "sourceRoot": "source/bindings/nodejs"
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Node.js bindings for IronCalc",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://www.ironcalc.com",
+      "license": [
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "Apache License 2.0",
+          "redistributable": true,
+          "shortName": "asl20",
+          "spdxId": "Apache-2.0",
+          "url": "https://spdx.org/licenses/Apache-2.0.html"
+        },
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "MIT License",
+          "redistributable": true,
+          "shortName": "mit",
+          "spdxId": "MIT",
+          "url": "https://spdx.org/licenses/MIT.html"
+        }
+      ],
+      "mainProgram": "",
+      "name": "ironcalc-nodejs",
+      "recipePath": "recipes/packages/ironcalc-nodejs/recipe.nix",
+      "source": {
+        "git": "github:ironcalc/ironcalc/8461ff71347ab19145cd7ad50ef829181ba765c2",
+        "hash": "sha256-vjI3M+hS9bXK8QQlopAy6f4dCISfQHGMvN9sMNKp88Q=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0.7.1-unstable-2026-04-29"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "cargoDeps": "/nix/store/fj4xl5mb6rrnv6zpwiqnl5ak8pcz2wqr-cargo-deps-vendor",
+          "cargoRoot": "../..",
+          "postPatch": "cd bindings/python\n"
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": true,
+          "importsCheck": ["ironcalc"],
+          "packages": {
+            "build": [
+              "/nix/store/v7mjkia7ki79s5i24ldbzq1khalhgzk0-pkg-config-wrapper-0.29.2",
+              "/nix/store/4kga8nrrdkkd94abvmpjqa99gnlyh628-cargo-setup-hook.sh",
+              "/nix/store/7mvw4qqvh2c4fh4q4gqcaxkzqfwgy6q3-maturin-build-hook.sh"
+            ],
+            "build-system": [],
+            "check": [
+              "/nix/store/ksw33i9lj8wfm42da4qnmhrq0iaggfvd-pytest-check-hook"
+            ],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": [
+              "/nix/store/zj6r42syyswkhrr174bzppj3n7xhq936-bzip2-1.0.8-bin",
+              "/nix/store/91jddg4g6788ilnk3kww8j8jhxhzk6d3-zstd-1.5.7-bin"
+            ]
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Python bindings for IronCalc",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://www.ironcalc.com",
+      "license": [
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "Apache License 2.0",
+          "redistributable": true,
+          "shortName": "asl20",
+          "spdxId": "Apache-2.0",
+          "url": "https://spdx.org/licenses/Apache-2.0.html"
+        },
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "MIT License",
+          "redistributable": true,
+          "shortName": "mit",
+          "spdxId": "MIT",
+          "url": "https://spdx.org/licenses/MIT.html"
+        }
+      ],
+      "mainProgram": "",
+      "name": "ironcalc-python",
+      "recipePath": "recipes/packages/ironcalc-python/recipe.nix",
+      "source": {
+        "git": "github:ironcalc/ironcalc/8461ff71347ab19145cd7ad50ef829181ba765c2",
+        "hash": "sha256-vjI3M+hS9bXK8QQlopAy6f4dCISfQHGMvN9sMNKp88Q=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0.7.1-unstable-2026-04-29"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "__structuredAttrs": true,
+          "buildAndTestSubdir": "webapp/app.ironcalc.com/server",
+          "cargoRoot": "webapp/app.ironcalc.com/server",
+          "postInstall": "install -Dm644 webapp/app.ironcalc.com/server/init_db.sql $out/share/ironcalc/init_db.sql\n",
+          "strictDeps": true
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "sha256-46IwZJI9AOs+IQFbfz89A2yIi5db7rVMVNsO9W+tn+c=",
+          "enable": true,
+          "packages": {
+            "build": [
+              "/nix/store/v7mjkia7ki79s5i24ldbzq1khalhgzk0-pkg-config-wrapper-0.29.2"
+            ],
+            "check": [],
+            "run": [
+              "/nix/store/zj6r42syyswkhrr174bzppj3n7xhq936-bzip2-1.0.8-bin",
+              "/nix/store/91jddg4g6788ilnk3kww8j8jhxhzk6d3-zstd-1.5.7-bin"
+            ]
+          }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "IronCalc server package",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://www.ironcalc.com",
+      "license": [
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "MIT License",
+          "redistributable": true,
+          "shortName": "mit",
+          "spdxId": "MIT",
+          "url": "https://spdx.org/licenses/MIT.html"
+        },
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "Apache License 2.0",
+          "redistributable": true,
+          "shortName": "asl20",
+          "spdxId": "Apache-2.0",
+          "url": "https://spdx.org/licenses/Apache-2.0.html"
+        }
+      ],
+      "mainProgram": "",
+      "name": "ironcalc-server",
+      "recipePath": "recipes/packages/ironcalc-server/recipe.nix",
+      "source": {
+        "git": "github:ironcalc/ironcalc/8461ff71347ab19145cd7ad50ef829181ba765c2",
+        "hash": "sha256-vjI3M+hS9bXK8QQlopAy6f4dCISfQHGMvN9sMNKp88Q=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0.7.1-unstable-2026-04-29"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "__structuredAttrs": true,
+          "doInstallCheck": true,
+          "installCheckPhase": "{ $out/bin/xlsx_2_icalc 2>&1 || true; } | grep -q \"Usage:\"\n\n$out/bin/xlsx_2_icalc xlsx/tests/docs/CHOOSE.xlsx test.ic\ntest -f test.ic\n",
+          "strictDeps": true
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "sha256-q5DnqhIYKUUqfJ4/TNHYF1QgTbH198QtgirQ+lP30wk=",
+          "enable": true,
+          "packages": {
+            "build": [
+              "/nix/store/v7mjkia7ki79s5i24ldbzq1khalhgzk0-pkg-config-wrapper-0.29.2",
+              "/nix/store/0r6k8xa2kgqyp3r4v2w7yrb80ma2iawm-python3-3.13.12"
+            ],
+            "check": [],
+            "run": [
+              "/nix/store/zj6r42syyswkhrr174bzppj3n7xhq936-bzip2-1.0.8-bin",
+              "/nix/store/91jddg4g6788ilnk3kww8j8jhxhzk6d3-zstd-1.5.7-bin"
+            ]
+          }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "IronCalc helper tools",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://www.ironcalc.com",
+      "license": [
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "MIT License",
+          "redistributable": true,
+          "shortName": "mit",
+          "spdxId": "MIT",
+          "url": "https://spdx.org/licenses/MIT.html"
+        },
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "Apache License 2.0",
+          "redistributable": true,
+          "shortName": "asl20",
+          "spdxId": "Apache-2.0",
+          "url": "https://spdx.org/licenses/Apache-2.0.html"
+        }
+      ],
+      "mainProgram": "xlsx_2_icalc",
+      "name": "ironcalc-tools",
+      "recipePath": "recipes/packages/ironcalc-tools/recipe.nix",
+      "source": {
+        "git": "github:ironcalc/ironcalc/8461ff71347ab19145cd7ad50ef829181ba765c2",
+        "hash": "sha256-vjI3M+hS9bXK8QQlopAy6f4dCISfQHGMvN9sMNKp88Q=",
+        "patches": [
+          "/nix/store/6qvbcq0az2i3iard2b207qiia06hximm-0001-FIX-test-message.patch"
+        ],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0.7.1-unstable-2026-04-29"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "buildPhase": "cd bindings/wasm\n# skip tests for now\n# make tests\n\nwasm-pack build --target web --scope ironcalc --release\ncp README.pkg.md pkg/README.md\ntsc types.ts --target esnext --module esnext\npython3 fix_types.py\nrm -f types.js\n\n# wasm-pack generates a package.json, we must provide one\ncat > pkg/package.json <<EOF\n{\n  \"name\": \"@ironcalc/wasm\",\n  \"version\": \"0.7.1-unstable-2026-04-29\",\n  \"type\": \"module\",\n  \"files\": [\n    \"wasm_bg.wasm\",\n    \"wasm.js\",\n    \"wasm.d.ts\"\n  ],\n  \"main\": \"wasm.js\",\n  \"module\": \"wasm.js\",\n  \"types\": \"wasm.d.ts\",\n  \"exports\": {\n    \".\": {\n      \"types\": \"./wasm.d.ts\",\n      \"import\": \"./wasm.js\"\n    }\n  },\n  \"sideEffects\": false\n}\nEOF\n",
+          "installPhase": "cp -r pkg $out\n"
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "sha256-q5DnqhIYKUUqfJ4/TNHYF1QgTbH198QtgirQ+lP30wk=",
+          "enable": true,
+          "packages": {
+            "build": [
+              "/nix/store/07bfakqii0mdv26wk44k7bv9frprapdv-binaryen-129",
+              "/nix/store/v7mjkia7ki79s5i24ldbzq1khalhgzk0-pkg-config-wrapper-0.29.2",
+              "/nix/store/0r6k8xa2kgqyp3r4v2w7yrb80ma2iawm-python3-3.13.12",
+              "/nix/store/46rr9pi2584iywi1zwrxcz2fc5z68118-wasm-bindgen-cli-0.2.108",
+              "/nix/store/4f8mdb9bkakw8fnwxwppk6c5ghsapkxs-wasm-pack-0.14.0",
+              "/nix/store/785jidgnryzj566s25s3rb262d4g5znb-nodejs-24.14.1",
+              "/nix/store/pxhpmfr4qwihzxqam9642a9r7jpvbblr-typescript-5.9.3",
+              "/nix/store/wq685vs12mx82jjr7ivpszibas5b05h3-lld-21.1.8",
+              "/nix/store/50d0sa775dqww34ap59s2kb5jb234qmn-writable-tmpdir-as-home-hook"
+            ],
+            "check": [],
+            "run": [
+              "/nix/store/zj6r42syyswkhrr174bzppj3n7xhq936-bzip2-1.0.8-bin",
+              "/nix/store/91jddg4g6788ilnk3kww8j8jhxhzk6d3-zstd-1.5.7-bin"
+            ]
+          }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Ironcalc wasm bindings",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://www.ironcalc.com",
+      "license": [
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "MIT License",
+          "redistributable": true,
+          "shortName": "mit",
+          "spdxId": "MIT",
+          "url": "https://spdx.org/licenses/MIT.html"
+        },
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "Apache License 2.0",
+          "redistributable": true,
+          "shortName": "asl20",
+          "spdxId": "Apache-2.0",
+          "url": "https://spdx.org/licenses/Apache-2.0.html"
+        }
+      ],
+      "mainProgram": "",
+      "name": "ironcalc-wasm",
+      "recipePath": "recipes/packages/ironcalc-wasm/recipe.nix",
+      "source": {
+        "git": "github:ironcalc/ironcalc/8461ff71347ab19145cd7ad50ef829181ba765c2",
+        "hash": "sha256-vjI3M+hS9bXK8QQlopAy6f4dCISfQHGMvN9sMNKp88Q=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0.7.1-unstable-2026-04-29"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "buildPhase": "npm run build\n",
+          "installPhase": "mkdir -p $out\ncp -r . $out\n",
+          "postPatch": "chmod -R u+w ../../bindings\n\n# We are now in source/webapp/IronCalc\nmkdir -p ../../bindings/wasm/pkg\necho '{\"name\": \"@ironcalc/wasm\", \"version\": \"0.7.1-unstable-2026-04-29\"}' > ../../bindings/wasm/pkg/package.json\n",
+          "preBuild": "rm -rf node_modules/@ironcalc/wasm\nmkdir -p node_modules/@ironcalc\ncp -rv /nix/store/956rpmnpn93ipnwv9qp7n0cfh6q9vyjq-ironcalc-wasm-0.7.1-unstable-2026-04-29/. node_modules/@ironcalc/wasm\n",
+          "preConfigure": "cp -rv /nix/store/956rpmnpn93ipnwv9qp7n0cfh6q9vyjq-ironcalc-wasm-0.7.1-unstable-2026-04-29/. ../../bindings/wasm/pkg/\n",
+          "sourceRoot": "source/webapp/IronCalc"
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": true,
+          "npmDepsHash": "sha256-jPnUUEOjW9WHVjpBH/qKB4P5RuMI0uvjog8C41cPQdY=",
+          "npmInstallFlags": [],
+          "packages": {
+            "build": [
+              "/nix/store/956rpmnpn93ipnwv9qp7n0cfh6q9vyjq-ironcalc-wasm-0.7.1-unstable-2026-04-29"
+            ],
+            "check": [],
+            "run": []
+          }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Ironcalc frontend widget package",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://www.ironcalc.com",
+      "license": [
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "MIT License",
+          "redistributable": true,
+          "shortName": "mit",
+          "spdxId": "MIT",
+          "url": "https://spdx.org/licenses/MIT.html"
+        },
+        {
+          "deprecated": false,
+          "free": true,
+          "fullName": "Apache License 2.0",
+          "redistributable": true,
+          "shortName": "asl20",
+          "spdxId": "Apache-2.0",
+          "url": "https://spdx.org/licenses/Apache-2.0.html"
+        }
+      ],
+      "mainProgram": "",
+      "name": "ironcalc-widget",
+      "recipePath": "recipes/packages/ironcalc-widget/recipe.nix",
+      "source": {
+        "git": "github:ironcalc/ironcalc/8461ff71347ab19145cd7ad50ef829181ba765c2",
+        "hash": "sha256-vjI3M+hS9bXK8QQlopAy6f4dCISfQHGMvN9sMNKp88Q=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0.7.1-unstable-2026-04-29"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": { "ctestFlags": ["-j1"], "doCheck": true },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": true,
+          "packages": {
+            "build": [
+              "/nix/store/avysx19spq1m2kzs01nhhqh310zazk40-bison-3.8.2",
+              "/nix/store/76sbmqvw4f1jyi3wf5gzy6csqapivj8a-boost-1.89.0",
+              "/nix/store/cgin5mwira0phh2g3v3w6s2n7x8ds8ix-capnproto-1.4.0",
+              "/nix/store/v2i1hgv567g3v91im5x4g5bff52143i0-cmake-4.1.2",
+              "/nix/store/jwryg9i737a839k48vl9zrcndpbkc0d6-flex-2.6.4",
+              "/nix/store/fgsh86gpr7d4bxhxqj22rh1qwpmzj6w8-onetbb-2022.3.0",
+              "/nix/store/v7mjkia7ki79s5i24ldbzq1khalhgzk0-pkg-config-wrapper-0.29.2",
+              "/nix/store/0r6k8xa2kgqyp3r4v2w7yrb80ma2iawm-python3-3.13.12",
+              "/nix/store/bswnlnf2z7v9kmaigxr5q647iws7lr2r-spdlog-1.17.0",
+              "/nix/store/ixhlv41i2wpl84xgjcks061dz4yssbg3-zlib-1.3.2"
+            ],
+            "check": [
+              "/nix/store/zv70srvkh7430hj0ga5ly1xdjc68a9an-ctestCheckHook"
+            ],
+            "run": [
+              "/nix/store/cgin5mwira0phh2g3v3w6s2n7x8ds8ix-capnproto-1.4.0",
+              "/nix/store/fgsh86gpr7d4bxhxqj22rh1qwpmzj6w8-onetbb-2022.3.0",
+              "/nix/store/0r6k8xa2kgqyp3r4v2w7yrb80ma2iawm-python3-3.13.12",
+              "/nix/store/ixhlv41i2wpl84xgjcks061dz4yssbg3-zlib-1.3.2"
+            ]
+          },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Formal Verification tool for Verilog and Naja interchange format.",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://github.com/keplertech/kepler-formal",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "GNU General Public License v3.0 only",
+        "redistributable": true,
+        "shortName": "gpl3Only",
+        "spdxId": "GPL-3.0-only",
+        "url": "https://spdx.org/licenses/GPL-3.0-only.html"
+      },
+      "mainProgram": "kepler-formal",
+      "name": "kepler-formal",
+      "recipePath": "recipes/packages/kepler-formal/recipe.nix",
+      "source": {
+        "git": "github:keplertech/kepler-formal/8aff6307f464f2a3020710e0a6cd0e4a0dd6a132",
+        "hash": "sha256-4hmA7d3aTcW2wIa2gzSqVpV/1dPiEDihoCOMDqvxqnU=",
+        "patches": [],
+        "path": null,
+        "submodules": true,
+        "url": null
+      },
+      "test": {
+        "packages": [],
+        "script": "kepler-formal --help | grep \"Usage: kepler-formal\"\n"
+      },
+      "version": "1.0.0-unstable-2026-04-13"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {},
+        "goPackageBuilder": {
+          "enable": true,
+          "ldflags": [
+            "-s",
+            "-w",
+            "-X github.com/mjl-/mox/moxvar.Version=0.0.15",
+            "-X github.com/mjl-/mox/moxvar.VersionBare=0.0.15"
+          ],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": null
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Modern full-featured open source secure mail server for low-maintenance self-hosted email",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://github.com/mjl-/mox",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "MIT License",
+        "redistributable": true,
+        "shortName": "mit",
+        "spdxId": "MIT",
+        "url": "https://spdx.org/licenses/MIT.html"
+      },
+      "mainProgram": "mox",
+      "name": "mox",
+      "recipePath": "recipes/packages/mox/recipe.nix",
+      "source": {
+        "git": "github:mjl-/mox/v0.0.15",
+        "hash": "sha256-apIV+nClXTUbmCssnvgG9UwpTNTHTe6FgLCxp14/s0A=",
+        "patches": [
+          "/nix/store/dx9xc3cpjg520kyj8x1jsd7pk4ri408y-version.patch"
+        ],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "mox version | grep \"0.0.15\"\n" },
+      "version": "0.0.15"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "modRoot": "server",
+          "preBuild": "cp -rT --no-preserve=mode /nix/store/ar9p5giid1s3j12pz5cnr7mcxcn4j540-offen-script-0.0.0-unstable-2026-03-04 public/static\ncp -rT --no-preserve=mode /nix/store/wh5nsyxa74074h3xgm117iyp9g80gwq3-offen-vault-0.0.0-unstable-2026-03-04 public/static\ncp -rT --no-preserve=mode /nix/store/rx58mb98cf2r7jjhs38g4pmm8lmsyanb-offen-auditorium-0.0.0-unstable-2026-03-04 public/static\n"
+        },
+        "goPackageBuilder": {
+          "enable": true,
+          "ldflags": ["-s", "-w"],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["cmd/offen"],
+          "tags": [],
+          "vendorHash": "sha256-AeQa5oaOEB/50aPCRq702vMEtEctwP+jU5C6zB+3XR0="
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Fair and privacy-focused web analytics.",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://www.offen.dev",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "Apache License 2.0",
+        "redistributable": true,
+        "shortName": "asl20",
+        "spdxId": "Apache-2.0",
+        "url": "https://spdx.org/licenses/Apache-2.0.html"
+      },
+      "mainProgram": "offen",
+      "name": "offen",
+      "recipePath": "recipes/packages/offen/recipe.nix",
+      "source": {
+        "git": "github:offen/offen/ec99082a37ffb5855bd84debfef227d41c7b403c",
+        "hash": "sha256-EGlqD3611sG3YTVe74H49PB8Hj1NsKYhLANg5VAQ0wg=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "offen --help\n" },
+      "version": "0.0.0-unstable-2026-03-04"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": { "preBuild": "cp -r ../locales locales\n" },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": true,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "sha256-xpdFlgHBUcHgL16hruFg6Spv1IlBEc7PB/UqpKnv5Oo=",
+          "sourceRoot": "source/auditorium"
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Analytics UI for Offen.",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://www.offen.dev",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "Apache License 2.0",
+        "redistributable": true,
+        "shortName": "asl20",
+        "spdxId": "Apache-2.0",
+        "url": "https://spdx.org/licenses/Apache-2.0.html"
+      },
+      "mainProgram": "",
+      "name": "offen-auditorium",
+      "recipePath": "recipes/packages/offen-auditorium/recipe.nix",
+      "source": {
+        "git": "github:offen/offen/ec99082a37ffb5855bd84debfef227d41c7b403c",
+        "hash": "sha256-EGlqD3611sG3YTVe74H49PB8Hj1NsKYhLANg5VAQ0wg=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0.0.0-unstable-2026-03-04"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": { "preBuild": "cp -r ../locales locales\n" },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": true,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "sha256-Vmv4aESpAvE9Dg28WpSPhtEEBr8q/BfqrJl5EXC0nl4=",
+          "sourceRoot": "source/script"
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Client-side analytics script for Offen.",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://www.offen.dev",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "Apache License 2.0",
+        "redistributable": true,
+        "shortName": "asl20",
+        "spdxId": "Apache-2.0",
+        "url": "https://spdx.org/licenses/Apache-2.0.html"
+      },
+      "mainProgram": "",
+      "name": "offen-script",
+      "recipePath": "recipes/packages/offen-script/recipe.nix",
+      "source": {
+        "git": "github:offen/offen/ec99082a37ffb5855bd84debfef227d41c7b403c",
+        "hash": "sha256-EGlqD3611sG3YTVe74H49PB8Hj1NsKYhLANg5VAQ0wg=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0.0.0-unstable-2026-03-04"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": { "preBuild": "cp -r ../locales locales\n" },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": true,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "sha256-vAXHm85rlsG0pAeRmqzmmI+Ztw0CmkzgVg9f67m3S3g=",
+          "sourceRoot": "source/vault"
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Client-side encryption vault for Offen.",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://www.offen.dev",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "Apache License 2.0",
+        "redistributable": true,
+        "shortName": "asl20",
+        "spdxId": "Apache-2.0",
+        "url": "https://spdx.org/licenses/Apache-2.0.html"
+      },
+      "mainProgram": "",
+      "name": "offen-vault",
+      "recipePath": "recipes/packages/offen-vault/recipe.nix",
+      "source": {
+        "git": "github:offen/offen/ec99082a37ffb5855bd84debfef227d41c7b403c",
+        "hash": "sha256-EGlqD3611sG3YTVe74H49PB8Hj1NsKYhLANg5VAQ0wg=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0.0.0-unstable-2026-03-04"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "env": { "PUPPETEER_SKIP_DOWNLOAD": true },
+          "postInstall": "mkdir -p $out/lib/node_modules/pagedjs-cli/docker-userdata\n\nwrapProgram $out/bin/pagedjs-cli \\\n  --set PUPPETEER_EXECUTABLE_PATH \"/nix/store/68h63fg3qyv62lkvmqpkdk8g8qnldzhp-chromium-147.0.7727.137/bin/chromium\" \\\n  --add-flags \"--browserArgs --no-sandbox\"\n"
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": true,
+          "npmDepsHash": "sha256-h3R+L9gROCqvKpzTg9woI0Om1J5Eo4NA1FCXjfnjwdU=",
+          "npmInstallFlags": ["--ignore-scripts"],
+          "packages": {
+            "build": [
+              "/nix/store/6x6v11xjf0psckgqmyhfyhw9bdma0rn6-nodejs-22.22.2",
+              "/nix/store/rrzkvxiy2pa3v4bm5n6y6hlx9m731bmc-make-shell-wrapper-hook"
+            ],
+            "check": [],
+            "run": [
+              "/nix/store/68h63fg3qyv62lkvmqpkdk8g8qnldzhp-chromium-147.0.7727.137"
+            ]
+          }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Command line interface for Pagedjs PDF renderer.",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://pagedjs.org",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "MIT License",
+        "redistributable": true,
+        "shortName": "mit",
+        "spdxId": "MIT",
+        "url": "https://spdx.org/licenses/MIT.html"
+      },
+      "mainProgram": "pagedjs-cli",
+      "name": "pagedjs-cli",
+      "recipePath": "recipes/packages/pagedjs-cli/recipe.nix",
+      "source": {
+        "git": "github:pagedjs/pagedjs-cli/1fc8c8956d665347a6a105c927be405a3ac462d6",
+        "hash": "sha256-393Q2B64lIPSYIckPOqVdhhQiHKcUE1jOpsYlFsiJvg=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": {
+        "packages": [],
+        "script": "pagedjs-cli --help | grep -q \"Usage:\"\n"
+      },
+      "version": "0-main-2026-01-05"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {},
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": true,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [
+              "/nix/store/2d3zqjxf1vgry5mci1sv5iicnhnrf882-python3.13-setuptools-80.10.1"
+            ],
+            "check": [],
+            "dependencies": [
+              "/nix/store/10hk7srr12wgp2hqm5lai0xxr69m76b7-python3.13-flask-3.1.2",
+              "/nix/store/vb5iqa5l1px0n55b236i1pyknn6bvn2b-python3.13-psycopg2-2.9.11"
+            ],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Python web application example built from GitHub source.",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://github.com/imincik/python-web-example",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "MIT License",
+        "redistributable": true,
+        "shortName": "mit",
+        "spdxId": "MIT",
+        "url": "https://spdx.org/licenses/MIT.html"
+      },
+      "mainProgram": "python-web",
+      "name": "python-web",
+      "recipePath": "recipes/packages/python-web/recipe.nix",
+      "source": {
+        "git": "github:imincik/python-web-example/bd57b302e930f3b8b80448d2c08a3aac7d48e4ec",
+        "hash": "sha256-nSW5746+criXHPrxmJ+0zhJCMwl78eer03qQAvDIo5U=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0.0.1"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "cmakeFlags": [
+            "-DCMAKE_BUILD_TYPE:STRING=Release",
+            "-DLOGLEVEL:STRING=INFO",
+            "-DUSE_PARALLEL:BOOL=TRUE",
+            "-D_NO_TIMING_TESTS:BOOL=TRUE",
+            "-DJEMALLOC_MANUALLY_INSTALLED:BOOL=TRUE",
+            "-DUSE_CONAN:BOOL=FALSE",
+            "-DFETCHCONTENT_FULLY_DISCONNECTED:BOOL=TRUE",
+            "-DFETCHCONTENT_SOURCE_DIR_FSST:STRING=/nix/store/7j2jihgsnn4kcb336wx19d2xkndh675z-source",
+            "-DFETCHCONTENT_SOURCE_DIR_RE2:STRING=/nix/store/mv89wv7daf7fflbcl8acj6rk3gszhian-source",
+            "-DFETCHCONTENT_SOURCE_DIR_GOOGLETEST:STRING=/nix/store/wqjbb4xw9s66p72v2ckvji0c49bymf7h-source",
+            "-DFETCHCONTENT_SOURCE_DIR_NLOHMANN-JSON:STRING=/nix/store/zi53bipc60dzz2vf7459087bjxbag9md-source",
+            "-DFETCHCONTENT_SOURCE_DIR_ANTLR:STRING=/nix/store/ki910797h7hk08xmx9fqdsdkikwq975j-source",
+            "-DFETCHCONTENT_SOURCE_DIR_RANGE-V3:STRING=/nix/store/9dxvz1j3l2v95gjxykjbdckcxh7al87i-source",
+            "-DFETCHCONTENT_SOURCE_DIR_SPATIALJOIN:STRING=/nix/store/0pl2r6mn9f926hc9n7f5isbnzbnh90jm-source",
+            "-DFETCHCONTENT_SOURCE_DIR_CTRE:STRING=/nix/store/sqqdn0mq6mnqfr76za5n75ps7840jj9y-source",
+            "-DFETCHCONTENT_SOURCE_DIR_ABSEIL:STRING=/nix/store/bia13yabw43ppx1qjbqvm5d3gfhbf4sc-source",
+            "-DFETCHCONTENT_SOURCE_DIR_S2:STRING=/nix/store/iyr9aqc4crw2bkjrs1fq953lq2z98kb9-source"
+          ],
+          "env": { "NIX_CFLAGS_COMPILE": "-fno-semantic-interposition" }
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": true,
+          "packages": {
+            "build": [
+              "/nix/store/v2i1hgv567g3v91im5x4g5bff52143i0-cmake-4.1.2",
+              "/nix/store/v7mjkia7ki79s5i24ldbzq1khalhgzk0-pkg-config-wrapper-0.29.2",
+              "/nix/store/c0277k5giric1mn9dklllavbzvxl6hzb-git-2.53.0"
+            ],
+            "check": [],
+            "run": [
+              "/nix/store/76sbmqvw4f1jyi3wf5gzy6csqapivj8a-boost-1.89.0",
+              "/nix/store/zj6r42syyswkhrr174bzppj3n7xhq936-bzip2-1.0.8-bin",
+              "/nix/store/0dmcpvbp2rvz8a7p2yhsrkpcb41kr6wl-icu4c-76.1",
+              "/nix/store/2di90l89y2ygdy3rbws7dhg9nrvd3pnx-openssl-3.6.1-bin",
+              "/nix/store/ixhlv41i2wpl84xgjcks061dz4yssbg3-zlib-1.3.2",
+              "/nix/store/91jddg4g6788ilnk3kww8j8jhxhzk6d3-zstd-1.5.7-bin",
+              "/nix/store/a9csdg0gi91i5cmgifvhza70sxp0bxy8-jemalloc-5.3.0-unstable-2025-09-12"
+            ]
+          },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Graph database implementing the RDF and SPARQL standards",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://github.com/ad-freiburg/qlever",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "Apache License 2.0",
+        "redistributable": true,
+        "shortName": "asl20",
+        "spdxId": "Apache-2.0",
+        "url": "https://spdx.org/licenses/Apache-2.0.html"
+      },
+      "mainProgram": "qlever",
+      "name": "qlever",
+      "recipePath": "recipes/packages/qlever/recipe.nix",
+      "source": {
+        "git": "github:ad-freiburg/qlever/v0.5.46",
+        "hash": "sha256-UUfSWy1mImmyL7Ha2xCbxm9srdY/rTJS4oUJbJiDtwQ=",
+        "patches": [],
+        "path": null,
+        "submodules": true,
+        "url": null
+      },
+      "test": {
+        "packages": [],
+        "script": "qlever-server --help 2>&1 | grep \"Options for qlever-server:\"\nqlever-index --help 2>&1 | grep \"Options for qlever-index:\"\n"
+      },
+      "version": "0.5.46"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {},
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": true,
+          "importsCheck": ["qlever"],
+          "packages": {
+            "build": [],
+            "build-system": [
+              "/nix/store/2d3zqjxf1vgry5mci1sv5iicnhnrf882-python3.13-setuptools-80.10.1",
+              "/nix/store/g6w2vgb9s4kxv3ydvaj0xn5r01s0s2d9-python3.13-wheel-0.46.1"
+            ],
+            "check": [],
+            "dependencies": [
+              "/nix/store/ik25jz1pdnx5lxqgggv2lk22yx5dv23p-python3.13-argcomplete-3.6.3",
+              "/nix/store/g7dr3zh6j9nmhncxw5s2ac6cg2bf6avd-python3.13-psutil-7.2.2",
+              "/nix/store/jl0mxihyizv77l66mzbvmv49iiri72sd-python3.13-pyyaml-6.0.3",
+              "/nix/store/5x5002n3m4qkag5mvc0m8d024gf2yzrn-python3.13-rdflib-7.5.0",
+              "/nix/store/vvz7fcw0zp8nxg279hc74ssv063hrim0-python3.13-termcolor-3.3.0",
+              "/nix/store/6mfqy7d4cijm8ph00qz1a30k38ncfz7r-python3.13-tqdm-4.67.1",
+              "/nix/store/6zk7r5f4ijk7jlw8xbp9h365rlwxzdhp-python3.13-requests-sse-0.5.3"
+            ],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Command-line tool for controlling the QLever graph database",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://github.com/qlever-dev/qlever-control",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "Apache License 2.0",
+        "redistributable": true,
+        "shortName": "asl20",
+        "spdxId": "Apache-2.0",
+        "url": "https://spdx.org/licenses/Apache-2.0.html"
+      },
+      "mainProgram": "qlever",
+      "name": "qlever-control",
+      "recipePath": "recipes/packages/qlever-control/recipe.nix",
+      "source": {
+        "git": "github:qlever-dev/qlever-control/v0.5.46",
+        "hash": "sha256-vXSVrNfz4gRBCrTi0D+sXtfsAZwv7HO67zs7wh98cOY=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": {
+        "packages": [],
+        "script": "qlever --help 2>&1 /dev/null | grep \"usage: qlever\"\n"
+      },
+      "version": "0.5.46"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "dontBuild": true,
+          "dontUnpack": true,
+          "installPhase": "unzip $src\ninstall -D olympics.nt -t $out\n"
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": true,
+          "packages": {
+            "build": ["/nix/store/d728bq0ajg6r80j9avj2mn82h3alhl88-unzip-6.0"],
+            "check": [],
+            "run": []
+          },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Olympics RDF dataset for use with QLever SPARQL engine.",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://github.com/wallscope/olympics-rdf",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "MIT License",
+        "redistributable": true,
+        "shortName": "mit",
+        "spdxId": "MIT",
+        "url": "https://spdx.org/licenses/MIT.html"
+      },
+      "mainProgram": "",
+      "name": "qlever-olympics-rdf-data",
+      "recipePath": "recipes/packages/qlever-olympics-rdf-data/recipe.nix",
+      "source": {
+        "git": null,
+        "hash": "sha256-dY28CQKaMDUUw/pw+p9yX0EtJOnbAAplodMFaedL1B8=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": "https://github.com/wallscope/olympics-rdf/raw/54483d539082641d48e1d49873662b3af628ca4d/data/olympics-nt-nodup.zip"
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "0-master-2023-01-01"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "postInstall": "makeWrapper /nix/store/nqpplc68qhbxh8winjxf39hlyqmgh26h-python3.13-gunicorn-23.0.0/bin/gunicorn \\\n  $out/bin/qlever-ui \\\n  --add-flags \"qlever.wsgi:application\" \\\n  --add-flags \"--limit-request-line 10000\" \\\n  --prefix PYTHONPATH : \"$PYTHONPATH\"\n\ncp -r $PWD $out/opt\n\nmakeWrapper /nix/store/wvc5nls154i1cql3s9gi0d6f5cij422k-forge-config.json/opt/manage.py \\\n  $out/bin/qlever-ui-manage \\\n  --set DJANGO_SETTINGS_MODULE qlever.settings \\\n  --prefix PYTHONPATH : \"$PYTHONPATH\"\n",
+          "preBuild": "cp -r /nix/store/w5199v1m5x480xwlz1bn08h2cgjbv4b7-qlever-ui-frontend-0-unstable-2026-04-16/. ./backend/static/wasm/\n"
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": true,
+          "importsCheck": ["qlever"],
+          "packages": {
+            "build": [],
+            "build-system": [
+              "/nix/store/2d3zqjxf1vgry5mci1sv5iicnhnrf882-python3.13-setuptools-80.10.1"
+            ],
+            "check": [],
+            "dependencies": [
+              "/nix/store/1nsji3bjbc2q0zafkmlclf44a10r0bjg-python3.13-django-5.2.13",
+              "/nix/store/485nh6x9i02mhhwp3cjp57mn27qyxwkf-python3.13-django-environ-0.12.0",
+              "/nix/store/2d67rbpadm8hm05aq64l8f8s08a5yygc-python3.13-django-import-export-4.4.0",
+              "/nix/store/zrw351hjpadhm9cmqray844yny8zqlgx-python3.13-djangorestframework-3.16.1",
+              "/nix/store/nqpplc68qhbxh8winjxf39hlyqmgh26h-python3.13-gunicorn-23.0.0",
+              "/nix/store/pkj9yz58kijfwyg4c0xpwc2dlwwswr6s-python3.13-markdown-3.10.2",
+              "/nix/store/jl0mxihyizv77l66mzbvmv49iiri72sd-python3.13-pyyaml-6.0.3",
+              "/nix/store/fc8jd38a9lyk1pn464lpl8kp258rxwsl-python3.13-requests-2.33.1",
+              "/nix/store/i297h912qhlzb55w64782jmv8vb2lmsk-python3.13-whitenoise-6.12.0"
+            ],
+            "optional-dependencies": {},
+            "run": [
+              "/nix/store/a5v2xxkxdzjr0iwas9mbkzkl78zgfj11-subversion-1.14.5"
+            ]
+          },
+          "relaxDeps": [
+            "django",
+            "django-environ",
+            "gunicorn",
+            "requests",
+            "whitenoise"
+          ]
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "User interface for QLever",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://github.com/qlever-dev/qlever-ui",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "Apache License 2.0",
+        "redistributable": true,
+        "shortName": "asl20",
+        "spdxId": "Apache-2.0",
+        "url": "https://spdx.org/licenses/Apache-2.0.html"
+      },
+      "mainProgram": "qlever-ui",
+      "name": "qlever-ui",
+      "recipePath": "recipes/packages/qlever-ui/recipe.nix",
+      "source": {
+        "git": "github:qlever-dev/qlever-ui/b12823ffd25f0c9ebdc530ebd16868e7389ef0fa",
+        "hash": "sha256-aN4vj5zYy/rkfhEylHd5wYGxwEFaZCSnpZIIYhSQMeo=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": {
+        "packages": [],
+        "script": "python -c \"import qlever; print(qlever.__name__)\"\n"
+      },
+      "version": "0-unstable-2026-04-16"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "installPhase": "runHook preInstall\ncp -r ./backend/static/wasm $out\nrunHook postInstall\n"
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": true,
+          "npmDepsHash": "sha256-Zq7+HLPO+lVYJflz7SK1rTgQtNSgbx2mZ7wFd6McBCo=",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Frontend for QLever UI",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://github.com/qlever-dev/qlever-ui",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "Apache License 2.0",
+        "redistributable": true,
+        "shortName": "asl20",
+        "spdxId": "Apache-2.0",
+        "url": "https://spdx.org/licenses/Apache-2.0.html"
+      },
+      "mainProgram": "",
+      "name": "qlever-ui-frontend",
+      "recipePath": "recipes/packages/qlever-ui-frontend/recipe.nix",
+      "source": {
+        "git": "github:qlever-dev/qlever-ui/b12823ffd25f0c9ebdc530ebd16868e7389ef0fa",
+        "hash": "sha256-aN4vj5zYy/rkfhEylHd5wYGxwEFaZCSnpZIIYhSQMeo=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": {
+        "packages": [],
+        "script": "test -f /nix/store/w5199v1m5x480xwlz1bn08h2cgjbv4b7-qlever-ui-frontend-0-unstable-2026-04-16/formatter/index.js\n"
+      },
+      "version": "0-unstable-2026-04-16"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {},
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": true,
+          "importsCheck": ["requests_sse"],
+          "packages": {
+            "build": [],
+            "build-system": [
+              "/nix/store/naaz1hkrcajaxgh1ifzhbj4lamw4g756-python3.13-poetry-core-2.3.2"
+            ],
+            "check": [],
+            "dependencies": [
+              "/nix/store/fc8jd38a9lyk1pn464lpl8kp258rxwsl-python3.13-requests-2.33.1"
+            ],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Server-sent events python client library based on requests",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://github.com/overcat/requests-sse",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "Apache License 2.0",
+        "redistributable": true,
+        "shortName": "asl20",
+        "spdxId": "Apache-2.0",
+        "url": "https://spdx.org/licenses/Apache-2.0.html"
+      },
+      "mainProgram": "",
+      "name": "requests-sse",
+      "recipePath": "recipes/packages/requests-sse/recipe.nix",
+      "source": {
+        "git": "github:overcat/requests-sse/0.5.3",
+        "hash": "sha256-+Zv7k+cYux7aBZk9MN7ySZh+pQUHNa6KjwxQ4l4aFxA=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": {
+        "packages": [],
+        "script": "python -c \"import requests_sse; print(requests_sse.__version__)\"\n"
+      },
+      "version": "0.5.3"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {
+          "env": {
+            "NIX_CFLAGS_COMPILE": "-I/nix/store/ww95w2vhhdbhgnprl3j8c7q0mcp83f40-libopus-1.6.1-dev/include/opus"
+          }
+        },
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "sha256-zqucj1iNsUdA06D+tDyYkevF/gio31JmcP00bk5PC18=",
+          "enable": true,
+          "packages": {
+            "build": [
+              "/nix/store/v7mjkia7ki79s5i24ldbzq1khalhgzk0-pkg-config-wrapper-0.29.2",
+              "/nix/store/azh4734ysk88k6ngmmdr8v3x33kj815p-rust-bindgen-hook"
+            ],
+            "check": [],
+            "run": [
+              "/nix/store/1wnga7gf22f16g35f5ig5ni9w045ix5v-libogg-1.3.6",
+              "/nix/store/hvp8495gl5845dyxaxvp766h89qfcxpn-libopus-1.6.1",
+              "/nix/store/vb1ny9v5w80plk70zn97f3rxdspxvfxg-libopusenc-0.3",
+              "/nix/store/fzhx92wqs9n9jvsgc41l7xpp7zxbbppa-libshout-2.4.6",
+              "/nix/store/3innqpmxwvmr2vc8h51g47aqdl6zj2b4-alsa-lib-1.2.15.3",
+              "/nix/store/7fypks7840nij756n9b42ka3k1h26qi5-jack2-1.9.22"
+            ]
+          }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Web radio - Hijacks audio device using CLAP and Ogg/Opus",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://github.com/tau-org/tau-radio",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "European Union Public License 1.2",
+        "redistributable": true,
+        "shortName": "eupl12",
+        "spdxId": "EUPL-1.2",
+        "url": "https://spdx.org/licenses/EUPL-1.2.html"
+      },
+      "mainProgram": "tau-radio",
+      "name": "tau-radio",
+      "recipePath": "recipes/packages/tau-radio/recipe.nix",
+      "source": {
+        "git": "github:tau-org/tau-radio/1847e4b4d91e941c19072752ed3afa95f2941a68",
+        "hash": "sha256-DW37p4FCK78Yk4KUtOcSfgjZGXhRytQA3/fR+ZkijxQ=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "tau-radio --version\n" },
+      "version": "0.2.101-unstable-2025-12-17"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {},
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "sha256-5BAL5A78LIgr5G50aU1TXl19qkKiUPPVJn/QogfRMKI=",
+          "enable": true,
+          "packages": {
+            "build": [
+              "/nix/store/xc6nj52vhg4ndmyxw7c5q6iqm8jzrwdm-perl-5.42.0",
+              "/nix/store/v7mjkia7ki79s5i24ldbzq1khalhgzk0-pkg-config-wrapper-0.29.2"
+            ],
+            "check": [],
+            "run": []
+          }
+        },
+        "standardBuilder": {
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Webradio server - broadcasts audio source to clients",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "https://github.com/tau-org/tau-tower",
+      "license": {
+        "deprecated": false,
+        "free": true,
+        "fullName": "European Union Public License 1.2",
+        "redistributable": true,
+        "shortName": "eupl12",
+        "spdxId": "EUPL-1.2",
+        "url": "https://spdx.org/licenses/EUPL-1.2.html"
+      },
+      "mainProgram": "tau-tower",
+      "name": "tau-tower",
+      "recipePath": "recipes/packages/tau-tower/recipe.nix",
+      "source": {
+        "git": "github:tau-org/tau-tower/26908437b568c80fc470934948067341e581d43e",
+        "hash": "sha256-qaui9xWNWuh669kWyTnLGqtuDIKFs4K5Iv3Tti6Befk=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "tau-tower --version\n" },
+      "version": "0.2.2-beta-unstable-2026-03-14"
+    },
+    {
+      "build": {
+        "debug": false,
+        "extraAttrs": {},
+        "goPackageBuilder": {
+          "enable": false,
+          "ldflags": [],
+          "modRoot": ".",
+          "packages": { "build": [], "check": [], "run": [] },
+          "proxyVendor": false,
+          "subPackages": ["."],
+          "tags": [],
+          "vendorHash": ""
+        },
+        "npmPackageBuilder": {
+          "enable": false,
+          "npmDepsHash": "",
+          "npmInstallFlags": [],
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "pnpmPackageBuilder": {
+          "buildScript": "build",
+          "enable": false,
+          "fetcherVersion": 3,
+          "installDir": "dist",
+          "packages": { "build": [], "check": [], "run": [] },
+          "pnpmDepsHash": "",
+          "sourceRoot": null
+        },
+        "pythonAppBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "pythonPackageBuilder": {
+          "disabledTests": [],
+          "enable": false,
+          "importsCheck": [],
+          "packages": {
+            "build": [],
+            "build-system": [],
+            "check": [],
+            "dependencies": [],
+            "optional-dependencies": {},
+            "run": []
+          },
+          "relaxDeps": []
+        },
+        "rustPackageBuilder": {
+          "cargoBuildFlags": [],
+          "cargoHash": "",
+          "enable": false,
+          "packages": { "build": [], "check": [], "run": [] }
+        },
+        "standardBuilder": {
+          "enable": true,
+          "packages": {
+            "build": [
+              "/nix/store/v2i1hgv567g3v91im5x4g5bff52143i0-cmake-4.1.2"
+            ],
+            "check": [],
+            "run": []
+          },
+          "stdenv": "/nix/store/w708nqm6lvvikrq8d3x45g96hzfij0r8-stdenv-linux"
+        }
+      },
+      "description": "Touchscreen access library",
+      "development": {
+        "packages": [],
+        "shellHook": "echo -e \"\\nWelcome. This environment contains all dependencies required\"\necho \"to build $DEVENV_PACKAGE_NAME from source.\"\necho\necho \"Grab the source code from $DEVENV_PACKAGE_SOURCE\"\necho \"or from the upstream repository and you are all set to start hacking.\"\n"
+      },
+      "homePage": "http://www.tslib.org/",
+      "license": {
+        "deprecated": true,
+        "free": true,
+        "fullName": "GNU Lesser General Public License v2.1",
+        "redistributable": true,
+        "shortName": "lgpl21",
+        "spdxId": "LGPL-2.1",
+        "url": "https://spdx.org/licenses/LGPL-2.1.html"
+      },
+      "mainProgram": "",
+      "name": "tslib",
+      "recipePath": "recipes/packages/tslib/recipe.nix",
+      "source": {
+        "git": "github:libts/tslib/1.24",
+        "hash": "sha256-WrzOTZlceYnFXi5AI5vb+ZDSRoqUDk/yyCdBUWKn0sM=",
+        "patches": [],
+        "path": null,
+        "submodules": false,
+        "url": null
+      },
+      "test": { "packages": [], "script": "echo \"Test script\"\n" },
+      "version": "1.24"
+    }
+  ],
+  "recipeDirs": { "apps": "recipes/apps", "packages": "recipes/packages" },
+  "repositoryUrl": "github:ngi-nix/forge"
+}

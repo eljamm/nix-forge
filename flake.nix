@@ -45,7 +45,7 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       # Uncomment this to enable flake-parts debug.
       # https://flake.parts/options/flake-parts.html?highlight=debug#opt-debug
-      # debug = true;
+      debug = true;
 
       systems = [
         "x86_64-linux"
