@@ -13,7 +13,7 @@ let
 in
 {
   packages.bang = {
-    version = "0-unstable-2026-06-11";
+    version = "0-unstable-2026-06-16";
     description = "Binary Analysis Next Generation framework for recursive unpacking and analysis of binary files.";
     homePage = "https://github.com/armijnhemel/binaryanalysis-ng";
     mainProgram = "bang";
