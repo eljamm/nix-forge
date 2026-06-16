@@ -6,7 +6,7 @@
 
 {
   packages.tau-tower = {
-    version = "0.2.101-unstable-2026-06-11";
+    version = "0.2.101-unstable-2026-06-16";
     description = "Webradio server - broadcasts audio source to clients.";
     homePage = "https://github.com/tau-org/tau-tower";
     mainProgram = "tau-tower";
