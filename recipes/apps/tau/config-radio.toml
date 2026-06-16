@@ -1,0 +1,17 @@
+username = "user"
+password = "password"
+
+# URL to the remote server ( use IP address if tls = false )
+url = "127.0.0.1"
+
+# The remote server port where we send the stream
+upstream_port = 3001
+
+# Default audio interface on macOS
+# audio_interface = "BlackHole 2ch"
+
+# On linux
+audio_interface = "pipewire"
+
+# broadcast behind tls/ssl encryption ( recommended )
+tls = false

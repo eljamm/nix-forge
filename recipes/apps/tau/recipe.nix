@@ -43,6 +43,7 @@
     programs = {
       packages = [
         pkgs.tau-radio
+        pkgs.tau-tower
       ];
       runtimes.shell = {
         enable = true;
@@ -52,14 +53,24 @@
     services = {
       components.tau-tower = {
         command = pkgs.tau-tower;
-        configData."tau/tower.toml" = {
-          source = ./config.toml;
-          path = "tau/tower.toml";
+        configData = {
+          "tau/tower.toml" = {
+            source = ./config-tower.toml;
+            path = "tau/tower.toml";
+          };
+          "tau/config.toml" = {
+            source = ./config-radio.toml;
+            path = "tau/config.toml";
+          };
         };
         ports = [
           "3001:3001"
           "3002:3002"
         ];
+        preStart = ''
+          echo "Installing configuration files ..."
+          install -D ''$XDG_CONFIG_HOME/tau/config.toml /etc/tau/config.toml
+        '';
       };
 
       runtimes = {
@@ -67,6 +78,7 @@
           enable = true;
           components.tau-tower.packages = [
             pkgs.tau-tower
+            pkgs.tau-radio
           ];
         };
 
@@ -74,7 +86,43 @@
           enable = true;
           packages = [
             pkgs.tau-tower
+            pkgs.tau-radio
           ];
+          nixosConfig = {
+            boot.initrd.availableKernelModules = [ "virtio_snd" ];
+            boot.kernelModules = [
+              "virtio_snd"
+              "snd_hda_intel"
+            ];
+
+            users.users.pipewire = {
+              extraGroups = [ "audio" ];
+            };
+
+            environment.systemPackages = with pkgs; [
+              sox
+            ];
+
+            security.rtkit.enable = true;
+            services.pipewire = {
+              enable = true;
+              alsa.enable = true;
+              alsa.support32Bit = true;
+              pulse.enable = true;
+              jack.enable = true;
+
+              # not recommended in a normal setup, but is required for pipewire to work in the test
+              systemWide = true;
+
+              wireplumber.enable = true;
+            };
+
+            virtualisation.qemu.options = [
+              # enable dummy audio
+              "-audiodev none,id=my_audiodev"
+              "-device intel-hda -device hda-duplex,audiodev=my_audiodev"
+            ];
+          };
         };
       };
     };
