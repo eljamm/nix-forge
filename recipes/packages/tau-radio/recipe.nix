@@ -6,7 +6,7 @@
 
 {
   packages.tau-radio = {
-    version = "0.2.101-unstable-2026-06-11";
+    version = "0.2.101-unstable-2026-06-16";
     description = "Web radio - Hijacks audio device using CLAP and Ogg/Opus.";
     homePage = "https://github.com/tau-org/tau-radio";
     mainProgram = "tau-radio";
