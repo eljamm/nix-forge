@@ -6,7 +6,7 @@
 
 {
   packages.sequoia-pgp = {
-    version = "1.4.0-pqc.1";
+    version = "1.4.0";
     description = "Command-line OpenPGP tool with post-quantum cryptography support.";
     homePage = "https://sequoia-pgp.org";
     mainProgram = "sq";
