@@ -6,7 +6,7 @@
 
 {
   packages.qlever-ui = {
-    version = "0-unstable-2026-06-11";
+    version = "0-unstable-2026-06-16";
     description = "User interface for QLever.";
     homePage = "https://github.com/qlever-dev/qlever-ui";
     mainProgram = "qlever-ui";
