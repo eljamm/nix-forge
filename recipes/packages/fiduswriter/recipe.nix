@@ -2,6 +2,7 @@
   lib,
   pkgs,
   packages,
+  config,
   ...
 }:
 
@@ -9,14 +10,14 @@ let
   modulesPath = ../../../nixpkgs/pkgs/development/python-modules;
 
   django-avatar = pkgs.python3Packages.callPackage (modulesPath + "/django-avatar") { };
-  django-js-error-hook = pkgs.python3Packages.callPackage (modulesPath + "django-js-error-hook") { };
-  django-loginas = pkgs.python3Packages.callPackage (modulesPath + "django-loginas") { };
-  django-npm-mjs = pkgs.python3Packages.callPackage (modulesPath + "django-npm-mjs") { };
-  servestatic = pkgs.python3Packages.callPackage (modulesPath + "servestatic") { };
+  django-js-error-hook = pkgs.python3Packages.callPackage (modulesPath + "/django-js-error-hook") { };
+  django-loginas = pkgs.python3Packages.callPackage (modulesPath + "/django-loginas") { };
+  django-npm-mjs = pkgs.python3Packages.callPackage (modulesPath + "/django-npm-mjs") { };
+  servestatic = pkgs.python3Packages.callPackage (modulesPath + "/servestatic") { };
 in
 
 {
-  packages.fiduswriter = pkg: {
+  packages.fiduswriter = {
     version = "4.1.10";
     description = "Online collaborative editor for academics.";
     homePage = "https://github.com/fiduswriter/fiduswriter";
@@ -75,7 +76,7 @@ in
 
     build.extraAttrs = {
       passthru = {
-        pythonPath = pkgs.python3Packages.makePythonPath pkg.build.pythonAppBuilder.packages.dependencies;
+        pythonPath = pkgs.python3Packages.makePythonPath packages.fiduswriter.build.pythonAppBuilder.packages.dependencies;
       };
 
       __structuredAttrs = true;
@@ -88,7 +89,7 @@ in
       '';
 
       env.FIDUS_OUT_DIR = "${placeholder "out"}/${pkgs.python3.sitePackages}";
-      env.PYTHONPATH = pkg.build.extraAttrs.passthru.pythonPath;
+      env.PYTHONPATH = config.packages.fiduswriter.build.extraAttrs.passthru.pythonPath;
 
       makeWrapperArgs = [
         "--chdir"
@@ -101,7 +102,7 @@ in
         "--prefix"
         "PYTHONPATH"
         ":"
-        "${pkg.build.extraAttrs.passthru.pythonPath}:${placeholder "out"}/${pkgs.python3.sitePackages}"
+        "${config.packages.fiduswriter.build.extraAttrs.passthru.pythonPath}:${placeholder "out"}/${pkgs.python3.sitePackages}"
       ];
 
       postFixup = ''

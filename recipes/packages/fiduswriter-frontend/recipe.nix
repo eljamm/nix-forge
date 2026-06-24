@@ -17,10 +17,11 @@
 
     build.pnpmPackageBuilder = {
       enable = true;
-      sourceRoot = "";
-      pnpm = pkgs.pnpm_11;
-      fetcherVersion = 4;
-      pnpmDepsHash = "";
+      inherit (packages.fiduswriter-frontend.build.extraAttrs.pnpmDeps)
+        pnpm
+        fetcherVersion
+        ;
+      pnpmDepsHash = packages.fiduswriter-frontend.build.extraAttrs.pnpmDeps.hash;
 
       packages.build = with pkgs; [
         gettext
@@ -33,6 +34,19 @@
     };
 
     build.extraAttrs = {
+      pnpmRoot = "fiduswriter/.transpile";
+      pnpmDeps = pkgs.fetchPnpmDeps {
+        inherit (pkgs.fiduswriter)
+          pname
+          version
+          src
+          postPatch
+          ;
+        pnpm = pkgs.pnpm_11;
+        fetcherVersion = 4;
+        hash = "sha256-8JqolPCb9HtfCIgRfM5a3BGozh4alYmEWuWSBUykAZg=";
+      };
+
       env.PYTHONPATH = "${packages.fiduswriter.build.extraAttrs.passthru.pythonPath}";
 
       postPatch = pkgs.fiduswriter.postPatch + ''
@@ -46,8 +60,6 @@
         "out"
         "node_modules"
       ];
-
-      pnpmRoot = "fiduswriter/.transpile";
 
       preBuild = ''
         pushd fiduswriter || true
