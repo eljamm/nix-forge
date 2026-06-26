@@ -13,16 +13,6 @@
   options = {
     enable = lib.mkEnableOption "Container runtime";
 
-    composeFile = lib.mkOption {
-      type = lib.types.nullOr lib.types.path;
-      default = null;
-      description = ''
-        Path to the custom container compose file.
-        Set to null to automatically generate this file.
-      '';
-      example = lib.literalExpression "./compose.yaml";
-    };
-
     components = lib.mkOption {
       type = lib.types.attrsOf (
         lib.types.submoduleWith {
@@ -55,21 +45,6 @@
                   example = lib.literalExpression "[ pkgs.curl ]";
                 };
 
-                imageConfig = lib.mkOption {
-                  type = with lib.types; lazyAttrsOf anything;
-                  default = { };
-                  description = ''
-                    OCI image configuration.
-
-                    See the list of available
-                    [OCI image configuration options](https://specs.opencontainers.org/image-spec/config/#properties) .
-                  '';
-                  example = lib.literalExpression ''
-                    {
-                      WorkingDir = "/var/lib/myservice";
-                    }
-                  '';
-                };
               };
             }
           ];
@@ -187,22 +162,18 @@
 
     result.build =
       let
-        effectiveComposeFile =
-          if config.composeFile != null then
-            config.composeFile
-          else
-            pkgs.writeText "${app.name}-compose.yaml" (
-              lib.generators.toYAML { } {
-                services = lib.mapAttrs (name: service: {
-                  image = "localhost/${name}:latest";
-                  ports = service.ports;
-                  depends_on = lib.genAttrs service.after (_name: { });
-                  tmpfs = [ "/tmp:rw,size=64m" ];
-                  volumes = [ "${name}-data:${service.stateDir}" ];
-                }) app.services.components;
-                volumes = lib.mapAttrs' (name: _: lib.nameValuePair "${name}-data" { }) app.services.components;
-              }
-            );
+        composeFile = pkgs.writeText "${app.name}-compose.yaml" (
+          lib.generators.toYAML { } {
+            services = lib.mapAttrs (name: service: {
+              image = "localhost/${name}:latest";
+              ports = service.ports;
+              depends_on = lib.genAttrs service.after (_name: { });
+              tmpfs = [ "/tmp:rw,size=64m" ];
+              volumes = [ "${name}-data:${service.stateDir}" ];
+            }) app.services.components;
+            volumes = lib.mapAttrs' (name: _: lib.nameValuePair "${name}-data" { }) app.services.components;
+          }
+        );
 
         build-oci-images = pkgs.writeShellScriptBin "build-oci-images" (
           lib.concatMapAttrsStringSep "\n" (name: value: ''
@@ -212,7 +183,7 @@
         );
 
         compose-file = pkgs.runCommand "compose-file" { } ''
-          install -D ${effectiveComposeFile} $out/${app.name}/compose.yaml
+          install -D ${composeFile} $out/${app.name}/compose.yaml
         '';
 
         cacheDir = "\${XDG_CACHE_HOME:-$HOME/.cache}/ngi-forge/${builtins.hashString "md5" specialArgs.forgeConfig.forge.repositoryUrl}/tmp";
