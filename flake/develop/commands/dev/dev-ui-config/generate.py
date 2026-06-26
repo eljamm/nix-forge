@@ -82,7 +82,7 @@ apps."{name}" = {{
 
   services = {{
     components.{name} = {{
-      command = pkgs.hello;
+      process.command = pkgs.hello;
     }};
     runtimes = {{
       container = {{

@@ -9,6 +9,25 @@
   specialArgs,
   ...
 }@args:
+let
+  resources = lib.foldlAttrs (
+    acc: cname: comp:
+    acc
+    // lib.mapAttrs (
+      rname: r:
+      let
+        runtimeOverride = config.resources.${rname}.nixosConfig or { };
+      in
+      {
+        nixosModules = (acc.${rname}.nixosModules or [ ]) ++ [
+          r.nixosConfig
+          runtimeOverride
+        ];
+        ports = r.ports;
+      }
+    ) comp.resources
+  ) { } app.services.components;
+in
 {
   options = {
     enable = lib.mkEnableOption "Container runtime";
@@ -44,7 +63,6 @@
                   '';
                   example = lib.literalExpression "[ pkgs.curl ]";
                 };
-
               };
             }
           ];
@@ -63,6 +81,46 @@
           self;
     };
 
+    resources = lib.mkOption {
+      type = lib.types.attrsOf (
+        lib.types.submodule {
+          options.nixosConfig = lib.mkOption {
+            type = lib.types.deferredModule;
+            default = { };
+            description = ''
+              Container runtime specific configuration.
+
+              See the list of available
+              [NixOS options](https://search.nixos.org/options) .
+            '';
+            example = lib.literalExpression ''
+              {
+                services.postgresql.enableTCPIP = true;
+                services.postgresql.authentication = '''
+                  local all all trust
+                  host all all 0.0.0.0/0 trust
+                  host all all ::0/0 trust
+                ''';
+              }
+            '';
+          };
+        }
+      );
+      default = { };
+      description = "Per-resource container runtime NixOS configuration.";
+      apply =
+        self:
+        let
+          knownResources = lib.concatMap (c: lib.attrNames c.resources) (
+            lib.attrValues app.services.components
+          );
+          unknownResources = lib.subtractLists knownResources (lib.attrNames self);
+        in
+        lib.throwIf (unknownResources != [ ])
+          "services.runtimes.container.resources: unknown resource(s): ${lib.concatStringsSep ", " unknownResources}. Must be one of: ${lib.concatStringsSep ", " (lib.unique knownResources)}"
+          self;
+    };
+
     result = {
       modules = lib.mkOption {
         internal = true;
@@ -75,6 +133,13 @@
         readOnly = true;
         type = with lib.types; lazyAttrsOf (either attrs anything);
         description = "Nimi module evaluation.";
+      };
+
+      nixosImages = lib.mkOption {
+        internal = true;
+        readOnly = true;
+        type = with lib.types; lazyAttrsOf package;
+        description = "OCI images built from NixOS configurations for resource components.";
       };
 
       recipes = lib.mkOption {
@@ -125,14 +190,14 @@
     }) app.services.components;
 
     result.evals = lib.mapAttrs (
-      name: value:
+      name: _:
       forge-inputs.nimi.packages.${system}.nimi.passthru.evalNimiModule {
         config = config.result.modules.${name};
       }
     ) app.services.components;
 
     result.recipes = lib.mapAttrs (
-      name: value:
+      name: _:
       forge-inputs.nimi.packages.${system}.nimi.mkContainerImage {
         config = config.result.modules.${name};
       }
@@ -141,12 +206,12 @@
     result.shellRunner = lib.mapAttrs (
       serviceName: service:
       let
-        componentPackages = service.packages;
+        componentPackages = service.process.packages;
         runtimeComponentPackages = config.components.${serviceName}.packages or [ ];
         binPaths = lib.makeBinPath ([ pkgs.coreutils ] ++ componentPackages ++ runtimeComponentPackages);
       in
       forge-inputs.nimi.packages.${system}.nimi.mkBwrap {
-        settings.bubblewrap.environment = service.environment // {
+        settings.bubblewrap.environment = service.process.environment // {
           PATH = binPaths;
         };
         settings.bubblewrap.prependFlags = [ "--clearenv" ];
@@ -160,18 +225,98 @@
       }
     ) app.services.components;
 
+    result.nixosImages = lib.mapAttrs (
+      name: resource:
+      let
+        nixosEval = forge-inputs.nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            (pkgs.path + "/nixos/modules/profiles/minimal.nix")
+            {
+              boot.isContainer = true;
+              boot.specialFileSystems = lib.mkForce { };
+              boot.nixStoreMountOpts = lib.mkForce [ ];
+              networking.hostName = "";
+              networking.useDHCP = false;
+              networking.resolvconf.enable = false;
+              environment.etc.hosts.enable = false;
+              systemd.services.systemd-logind.enable = false;
+              systemd.services.console-getty.enable = false;
+              systemd.sockets.nix-daemon.enable = lib.mkDefault false;
+              systemd.services.nix-daemon.enable = lib.mkDefault false;
+              systemd.oomd.enable = false;
+              system.nssModules = lib.mkForce [ ];
+              system.disableInstallerTools = true;
+              system.switch.enable = false;
+              services.nscd.enable = false;
+              services.journald.extraConfig = ''
+                Storage=volatile
+              '';
+              system.activationScripts.logs-hint.text = ''
+                echo "Run 'podman exec \$(podman ps -qf name=${app.name}_${name}) journalctl -f' to see more logs ..."
+              '';
+
+              nix.enable = false;
+              system.stateVersion = "26.05";
+            }
+          ]
+          ++ resource.nixosModules;
+        };
+        toplevel = nixosEval.config.system.build.toplevel;
+        initScript = pkgs.runCommand "${name}-init" { } ''
+          mkdir -p $out/usr/sbin
+          ln -s ${toplevel}/init $out/usr/sbin/init
+        '';
+      in
+      pkgs.dockerTools.streamLayeredImage {
+        inherit name;
+        tag = "latest";
+        contents = [ initScript ];
+        config = {
+          Cmd = [ "/usr/sbin/init" ];
+          Env = [
+            "container=docker"
+            "PATH=/usr/bin:/run/current-system/sw/bin/"
+          ];
+          StopSignal = "SIGRTMIN+3";
+        };
+      }
+    ) resources;
+
     result.build =
       let
+        resourceNames = lib.attrNames resources;
+
         composeFile = pkgs.writeText "${app.name}-compose.yaml" (
           lib.generators.toYAML { } {
-            services = lib.mapAttrs (name: service: {
-              image = "localhost/${name}:latest";
-              ports = service.ports;
-              depends_on = lib.genAttrs service.after (_name: { });
-              tmpfs = [ "/tmp:rw,size=64m" ];
-              volumes = [ "${name}-data:${service.stateDir}" ];
-            }) app.services.components;
-            volumes = lib.mapAttrs' (name: _: lib.nameValuePair "${name}-data" { }) app.services.components;
+            services =
+              lib.mapAttrs (name: service: {
+                image = "localhost/${name}:latest";
+                ports = service.process.ports;
+                depends_on = lib.genAttrs (service.after ++ resourceNames) (_name: {
+                  condition = "service_started";
+                });
+                tmpfs = [
+                  "/tmp:rw,size=64m"
+                  "/run:rw,size=64m"
+                ];
+                volumes = [ "${name}-data:${service.process.stateDir}" ];
+              }) app.services.components
+              // lib.mapAttrs (name: resource: {
+                image = "localhost/${name}:latest";
+                ports = resource.ports;
+                tmpfs = [
+                  "/run"
+                  "/run/wrappers"
+                ];
+                volumes = [ "${name}-data:/var/lib" ];
+                cap_add = [ "SYS_ADMIN" ];
+                stop_signal = "SIGRTMIN+3";
+                stop_grace_period = "30s";
+              }) resources;
+            volumes =
+              lib.mapAttrs' (name: _: lib.nameValuePair "${name}-data" { }) app.services.components
+              // lib.mapAttrs' (name: _: lib.nameValuePair "${name}-data" { }) resources;
           }
         );
 
@@ -180,6 +325,10 @@
             ${value.copyTo}/bin/copy-to oci-archive:${name}.tar:${name}:latest
             echo "Created container image in $(pwd)/${name}.tar"
           '') config.result.recipes
+          + lib.concatMapAttrsStringSep "\n" (name: imageStream: ''
+            ${imageStream} 2>/dev/null > "${name}.tar"
+            echo "Created container image in $(pwd)/${name}.tar"
+          '') config.result.nixosImages
         );
 
         compose-file = pkgs.runCommand "compose-file" { } ''

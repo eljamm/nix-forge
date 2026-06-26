@@ -3,6 +3,7 @@
   forge-inputs,
   config,
   system,
+  app,
   ...
 }@args:
 {
@@ -41,14 +42,16 @@
       type = with lib.types; deferredModule;
       default = { };
       description = ''
-        NixOS system configuration.
+        NixOS runtime specific configuration.
 
         See the list of available
         [NixOS options](https://search.nixos.org/options) .
       '';
       example = lib.literalExpression ''
         {
-          services.postgresql.enable = true;
+          services.postgresql.authentication = '''
+            local all all trust
+          ''';
         }
       '';
     };
@@ -126,6 +129,22 @@
       packages = {
         environment.systemPackages = config.packages;
       };
+      nixosComponents = {
+        imports = lib.concatMap (c: map (r: r.nixosConfig) (lib.attrValues c.resources)) (
+          lib.attrValues app.services.components
+        );
+
+        networking.extraHosts =
+          let
+            componentNames = lib.attrNames app.services.components;
+            resourceNames = lib.concatMap (c: lib.attrNames c.resources) (
+              lib.attrValues app.services.components
+            );
+          in
+          lib.concatMapStringsSep "\n" (name: "127.0.0.1 ${name}") (
+            lib.unique (componentNames ++ resourceNames)
+          );
+      };
     };
 
     result.nixosModule = {
@@ -134,6 +153,7 @@
         config.result.modules.nimi
         config.result.modules.packages
         config.result.modules.nixosConfig
+        config.result.modules.nixosComponents
       ];
     };
 

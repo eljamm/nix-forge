@@ -18,7 +18,7 @@
 
   users.groups = lib.mkMerge (
     lib.mapAttrsToList (serviceName: _: { ${serviceName} = { }; }) (
-      lib.filterAttrs (_: service: service.user != "prefer-dynamic") app.services.components
+      lib.filterAttrs (_: service: service.process.user != "prefer-dynamic") app.services.components
     )
   );
 
@@ -28,29 +28,31 @@
         isSystemUser = true;
         group = serviceName;
       };
-    }) (lib.filterAttrs (_: service: service.user != "prefer-dynamic") app.services.components)
+    }) (lib.filterAttrs (_: service: service.process.user != "prefer-dynamic") app.services.components)
   );
 
   systemd.services = lib.mapAttrs (
     serviceName: service:
     let
-      serviceAfterUnits = map (a: a + ".service") service.after;
+      serviceAfterUnits = map (a: a + ".service") (
+        lib.filter (a: app.services.components ? ${a}) service.after
+      );
     in
     {
-      environment = service.environment;
-      path = service.packages;
+      environment = service.process.environment;
+      path = service.process.packages;
       serviceConfig = lib.mkMerge [
         {
-          PassEnvironment = lib.attrNames service.environment;
+          PassEnvironment = lib.attrNames service.process.environment;
           User = lib.mkDefault serviceName;
           Group = lib.mkDefault serviceName;
           StateDirectory = serviceName;
-          WorkingDirectory = service.stateDir;
+          WorkingDirectory = service.process.stateDir;
         }
-        (lib.optionalAttrs (service.user == "prefer-dynamic") {
+        (lib.optionalAttrs (service.process.user == "prefer-dynamic") {
           DynamicUser = true;
         })
-        (lib.optionalAttrs (service.user == "root") {
+        (lib.optionalAttrs (service.process.user == "root") {
           User = "root";
         })
       ];
