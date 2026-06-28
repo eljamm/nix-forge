@@ -9,27 +9,6 @@
   specialArgs,
   ...
 }@args:
-let
-  resources = lib.foldlAttrs (
-    acc: cname: comp:
-    acc
-    // lib.mapAttrs (
-      compResourceName: compResource:
-      let
-        runtimeResource = config.resources.${compResourceName} or { };
-        runtimeOverride = runtimeResource.nixosConfig or { };
-      in
-      {
-        # combine both runtime and service-component resources
-        nixosModules = (acc.${compResourceName}.nixosModules or [ ]) ++ [
-          compResource.nixosConfig
-          runtimeOverride
-        ];
-        ports = compResource.ports;
-      }
-    ) comp.resources
-  ) { } app.services.components;
-in
 {
   options = {
     enable = lib.mkEnableOption "Container runtime";
@@ -233,6 +212,7 @@ in
         nixosEval = forge-inputs.nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
+            (resource.nixosConfig)
             (pkgs.path + "/nixos/modules/profiles/minimal.nix")
             {
               boot.isContainer = true;
@@ -261,8 +241,7 @@ in
               nix.enable = false;
               system.stateVersion = "26.05";
             }
-          ]
-          ++ resource.nixosModules;
+          ];
         };
         toplevel = nixosEval.config.system.build.toplevel;
         initScript = pkgs.runCommand "${name}-init" { } ''
@@ -283,11 +262,11 @@ in
           StopSignal = "SIGRTMIN+3";
         };
       }
-    ) resources;
+    ) app.services.resources;
 
     result.build =
       let
-        resourceNames = lib.attrNames resources;
+        resourceNames = lib.attrNames app.services.resources;
 
         composeFile = pkgs.writeText "${app.name}-compose.yaml" (
           lib.generators.toYAML { } {
@@ -315,10 +294,10 @@ in
                 cap_add = [ "SYS_ADMIN" ];
                 stop_signal = "SIGRTMIN+3";
                 stop_grace_period = "30s";
-              }) resources;
+              }) app.services.resources;
             volumes =
               lib.mapAttrs' (name: _: lib.nameValuePair "${name}-data" { }) app.services.components
-              // lib.mapAttrs' (name: _: lib.nameValuePair "${name}-data" { }) resources;
+              // lib.mapAttrs' (name: _: lib.nameValuePair "${name}-data" { }) app.services.resources;
           }
         );
 
