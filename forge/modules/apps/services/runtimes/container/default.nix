@@ -269,7 +269,7 @@
           cap_add = [ "SYS_ADMIN" ];
           stop_signal = "SIGRTMIN+3";
           stop_grace_period = "30s";
-        }) config.resources;
+        }) app.services.resources;
 
         composeFile = pkgs.writeText "${app.name}-compose.yaml" (
           lib.generators.toYAML { } {
