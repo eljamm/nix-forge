@@ -14,16 +14,18 @@ let
     acc: cname: comp:
     acc
     // lib.mapAttrs (
-      rname: r:
+      compResourceName: compResource:
       let
-        runtimeOverride = config.resources.${rname}.nixosConfig or { };
+        runtimeResource = config.resources.${compResourceName} or { };
+        runtimeOverride = runtimeResource.nixosConfig or { };
       in
       {
-        nixosModules = (acc.${rname}.nixosModules or [ ]) ++ [
-          r.nixosConfig
+        # combine both runtime and service-component resources
+        nixosModules = (acc.${compResourceName}.nixosModules or [ ]) ++ [
+          compResource.nixosConfig
           runtimeOverride
         ];
-        ports = r.ports;
+        ports = compResource.ports;
       }
     ) comp.resources
   ) { } app.services.components;
