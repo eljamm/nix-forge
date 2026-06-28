@@ -30,9 +30,10 @@
         servicePorts = lib.concatMap (service: service.process.ports) (
           lib.attrValues app.services.components
         );
-        resourcePorts = lib.concatMap (
-          service: lib.concatMap (r: r.ports) (lib.attrValues service.resources)
-        ) (lib.attrValues app.services.components);
+        resourcePorts = lib.pipe app.services.resources [
+          (lib.mapAttrsToList (name: value: value.ports))
+          (lib.flatten)
+        ];
       in
       map (
         portRange:
@@ -44,6 +45,6 @@
           host.port = lib.toInt (lib.elemAt portSplit 0);
           guest.port = lib.toInt (lib.elemAt portSplit 1);
         }
-      ) (lib.unique (servicePorts ++ resourcePorts));
+      ) (servicePorts ++ resourcePorts);
   };
 }
