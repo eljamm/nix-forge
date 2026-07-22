@@ -19,6 +19,7 @@
         inputs = self-inputs;
         inherit forge-inputs;
         inherit forge-lib;
+        nixpkgs = pkgs;
         pkgs = pkgs.extend (
           finalPkgs: previousPkgs:
           # Extend `pkgs` with the packages from the forge.
